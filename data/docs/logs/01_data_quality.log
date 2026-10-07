@@ -1,0 +1,254 @@
+
+======== 1. KEYS / DUPLICATES ========
+customers       rows= 4068 key=customer_id              dup_keys=  0 full_dup_rows=  0 null_key=0
+orders          rows= 5073 key=order_id                 dup_keys=  0 full_dup_rows=  0 null_key=0
+order_items     rows= 8835 key=order_item_id            dup_keys=  0 full_dup_rows=  0 null_key=0
+products        rows=   12 key=product_id               dup_keys=  0 full_dup_rows=  0 null_key=0
+returns         rows=  473 key=return_id                dup_keys=  0 full_dup_rows=  0 null_key=0
+shipping_costs  rows= 5043 key=shipment_id              dup_keys=  4 full_dup_rows=  4 null_key=0
+discounts       rows= 2848 key=discount_application_id  dup_keys=  0 full_dup_rows=  0 null_key=0
+marketing_spend dup (month,channel): 0
+customers: distinct email_hash = 4034 of 4068 | persons with >1 customer_id: 30
+order_items dup (order_id, product_id): 11
+
+======== 2. ORPHANS (FK checks) ========
+orders.customer_id -> customers               orphans=0
+order_items.order_id -> orders                orphans=0
+order_items.product_id -> products            orphans=288
+                           lines  qty         price
+product_id sku                                     
+P-03       MS-SER-VTC30        2    2  [34.0, 38.0]
+P13        MS-GIFT-SACHET    283  283         [0.0]
+p03        MS-SER-VTC30        1    1        [38.0]
+p07        MS-MOI-SPF50        2    2        [32.0]
+shipping_costs.order_id -> orders             orphans=3
+discounts.order_id -> orders                  orphans=2
+returns.order_id -> orders                    orphans=4
+     return_id  order_id  order_item_id product_id return_date               reason  quantity_returned  refund_amount refund_type      return_method  return_shipping_cost  restocked  replacement_sent
+469  RET-X0001      8841         599001        P09  2026-04-06   no_visible_results                  1           30.0        full  returnless_refund                  0.00      False             False
+470  RET-X0002      8842         599002        P03  2025-12-07           wrong_item                  1           23.8        full       shipped_back                  7.25       True             False
+471  RET-X0003      8843         599003        P06  2025-12-10  irritation_breakout                  2           61.6        full  returnless_refund                  0.00      False             False
+472  RET-X0004      8844         599004        P07  2026-02-27      not_as_expected                  1           27.2        full  returnless_refund                  0.00      False             False
+returns.order_item_id -> order_items          orphans=4
+orders with no items: 0
+orders with no shipment: 67
+customers with no orders: 160
+returns where order_id != item's order_id: 0
+returns where product_id != item's product_id: 0
+returns where quantity_returned > item quantity: 0
+returns with >1 row per order_item: 0
+
+======== 3. MISSING VALUES ========
+customers {'acquisition_source': np.int64(282)}
+orders {'cancelled_at': np.int64(5012), 'discount_codes': np.int64(2388)}
+order_items none
+products {'cogs': np.int64(1), 'bundle_components': np.int64(11)}
+returns none
+shipping_costs {'postage_cost': np.int64(40)}
+discounts {'percentage': np.int64(100)}
+marketing_spend none
+products with null cogs:
+    product_id                                               product_name bundle_components
+11        P12  Complete Routine Set (Cleanser + Vitamin C + Moisturizer)       P01|P03|P07
+shipping rows null postage: 40 | their order statuses:
+financial_status
+paid                  36
+partially_refunded     2
+refunded               2
+discounts null percentage by type:
+ discount_type
+free_shipping    100
+
+======== 4. DATES ========
+orders created range: 2025-07-01 02:19:33+00:00 -> 2026-06-30 23:53:56+00:00
+orders outside 2025-07-01..2026-06-30 (UTC): 0
+customers created range: 2025-05-28 00:21:09+00:00 -> 2026-06-30 21:45:58+00:00
+returns date range: 2025-07-15 00:00:00 -> 2026-06-30 00:00:00 | after extract 2026-07-02: 0
+return before order date: 3 | days-to-return describe:
+count    469.0
+mean      15.4
+std        9.0
+min       -3.0
+25%        9.0
+50%       13.0
+75%       20.0
+max       45.0
+returns > 90 days after order: 0
+returns on voided orders: 0
+ship before order: 0 | ship lag describe:
+count    5040.0
+mean        1.6
+std         1.8
+min         0.0
+25%         1.0
+50%         2.0
+75%         3.0
+max        41.0
+customer record created AFTER first order: 0
+cancelled_at non-null: 61 | by status:
+financial_status
+voided    61
+month sequence marketing: 2025-07-01 -> 2026-06-01 n_months 12
+
+======== 5. TEST / VOIDED ORDERS ========
+payment_gateway     bogus  klarna  paypal  shop_pay  shopify_payments
+financial_status                                                     
+paid                    6      81     748       901              2845
+partially_refunded      0       6      48        75               183
+refunded                0       2      19        23                75
+voided                  0       0      16        12                33
+bogus gateway orders: 6 | TEST code orders: 7
+overlap bogus & TEST code: 6
+      order_id  customer_id            created_at financial_status  subtotal  discount_total discount_codes  total_paid
+15        1016       100026  2025-07-03T15:10:00Z             paid      34.0            34.0        TEST100         0.0
+345       1346       100364  2025-08-14T09:41:00Z             paid      34.0            34.0        TEST100         0.0
+573       1574       100574  2025-09-09T11:02:00Z             paid      34.0            34.0        TEST100         0.0
+1210      2211       101102  2025-11-03T13:25:00Z             paid      34.0            34.0        TEST100         0.0
+2356      3357       102028  2026-01-08T10:15:00Z             paid      34.0            34.0        TEST100         0.0
+3906      4907       103202  2026-04-22T16:48:00Z             paid      38.0            38.0        TEST100         0.0
+orders with discount code TEST not bogus: [np.int64(8202)]
+voided orders: shipments: 0 | returns: 0 | total_paid sum: 4201.97 | payment_fee sum: 0.0
+unfulfilled vs status:
+financial_status    paid  partially_refunded  refunded  voided
+fulfillment_status                                            
+fulfilled           4575                 312       119       0
+unfulfilled            6                   0         0      61
+
+======== 6. RECONCILIATION ========
+d_subtotal     nonzero(|x|>0.02)=   11  sum=   -360.00  min=  -44.00 max=    0.00
+d_disc_lines   nonzero(|x|>0.02)=    3  sum=    -17.32  min=   -8.80 max=    0.00
+d_disc_codes   nonzero(|x|>0.02)=    0  sum=      0.00  min=    0.00 max=    0.00
+d_total        nonzero(|x|>0.02)=    0  sum=      0.00  min=    0.00 max=    0.00
+orders with discount_total>0 but no discount row: 0
+orders with discount row but discount_total==0: 0
+discount_codes text vs discounts rows (codes count):
+  mismatch: 0
+sample subtotal mismatches:
+           subtotal  items_gross  d_subtotal  n_lines
+order_id                                            
+1484         116.0        148.0       -32.0      3.0
+2265          68.0        102.0       -34.0      3.0
+2766          78.0        112.0       -34.0      3.0
+3336          44.0         88.0       -44.0      2.0
+3389          65.0        101.0       -36.0      3.0
+3491          54.0         86.0       -32.0      3.0
+4467          80.0        116.0       -36.0      3.0
+4694          58.0         84.0       -26.0      3.0
+sample total mismatches:
+ Empty DataFrame
+Columns: [subtotal, discount_total, shipping_charged, tax_total, total_paid, calc_total, d_total, financial_status]
+Index: []
+free-ship rows: 100 | amounts describe:
+count    100.00
+mean       7.98
+std        3.19
+min        5.95
+25%        5.95
+50%        5.95
+75%       12.95
+max       12.95
+free-ship orders shipping_charged describe:
+count    100.0
+mean       0.0
+std        0.0
+min        0.0
+25%        0.0
+50%        0.0
+75%        0.0
+max        0.0
+
+======== 7. LINES / PRICES ========
+unit_price != current_price lines: 1112 of 8835
+            size  min  max
+product_id                
+P03          749 -4.0 -4.0
+P12          363 -4.0 -4.0
+zero-price (gift) lines: 283
+product_id
+P13    283
+qty describe:
+count    8835.000000
+mean        1.099038
+std         0.298730
+min         1.000000
+25%         1.000000
+50%         1.000000
+75%         1.000000
+max         2.000000
+negative values: items 0 orders 0
+line_discount > gross lines: 0
+payment_fee describe:
+count    5073.00
+mean        2.36
+std         1.24
+min         0.00
+25%         1.46
+50%         2.02
+75%         2.97
+max        14.40
+P12 bundle lines: 677 | components: <StringArray>
+['P01|P03|P07']
+Length: 1, dtype: str
+sku mismatch with products: 288
+
+======== 8. RETURNS ========
+refund > net line value (+0.02): 0
+full refunds where refund != net*qty_ret/qty (|d|>0.02): 0
+replacement rows refund>0: 0 | replacement_sent flag != replacement type: 0
+shipped_back with return_shipping_cost==0: 78 of 106
+returnless with return_shipping_cost>0: 0
+restocked True but returnless: 0
+return_id prefix counts:
+return_id
+RET-0    469
+RET-X      4
+rows RET-X*:
+     return_id  order_id  order_item_id product_id return_date               reason  quantity_returned  refund_amount refund_type      return_method  return_shipping_cost  restocked  replacement_sent      rdate
+469  RET-X0001      8841         599001        P09  2026-04-06   no_visible_results                  1           30.0        full  returnless_refund                  0.00      False             False 2026-04-06
+470  RET-X0002      8842         599002        P03  2025-12-07           wrong_item                  1           23.8        full       shipped_back                  7.25       True             False 2025-12-07
+471  RET-X0003      8843         599003        P06  2025-12-10  irritation_breakout                  2           61.6        full  returnless_refund                  0.00      False             False 2025-12-10
+472  RET-X0004      8844         599004        P07  2026-02-27      not_as_expected                  1           27.2        full  returnless_refund                  0.00      False             False 2026-02-27
+returns with return date earlier than same order's other returns sequence (id order vs date): non-monotonic ids count: 5
+order financial_status vs returns present:
+ostatus
+partially_refunded    319
+refunded              122
+paid                   28
+NaN                     4
+refunded/partially_refunded orders without return row: 0
+paid orders with return rows: 28
+
+======== 9. LABELS / NORMALISATION ========
+reason raw->normalised: ['Changed Mind', 'Damaged Leaked', 'Irritation Breakout', 'No Visible Results', 'Not As Expected', 'changed_mind', 'damaged_leaked', 'irritation_breakout', 'no_visible_results', 'not_as_expected', 'wrong_item']
+normalised reason: {'not_as_expected': 128, 'irritation_breakout': 117, 'changed_mind': 78, 'no_visible_results': 76, 'damaged_leaked': 55, 'wrong_item': 19}
+codes upper-merge: ['AMELIA10', 'BFCM30', 'DERMDIARY10', 'FREESHIP', 'GLOWWITHSAM12', 'HOLIDAY15', 'LABORDAY15', 'LOYAL10', 'LOYAL10 ', 'MOMS15', 'NEWYEAR20', 'NOURISHED15', 'SKINBYJORDAN15', 'SPRING25', 'SUMMER20', 'TEST100', 'WELCOME15', 'welcome15']
+acq source raw: {'meta': 778, 'organic_search': 720, 'google_ads': 434, 'influencer': 382, 'direct': 377, '<blank>': 282, 'tiktok': 257, 'referral': 240, 'Facebook': 183, 'Google': 98, 'facebook_ads': 94, 'IG': 84, 'TikTok': 53, 'Direct': 50, 'Influencer': 36}
+accepts_marketing: {True: 2580, False: 1488}
+discount code vs text in orders.discount_codes - distinct: ['AMELIA10', 'BFCM30', 'DERMDIARY10', 'FREESHIP', 'GLOWWITHSAM12', 'HOLIDAY15', 'LABORDAY15', 'LOYAL10', 'MOMS15', 'NEWYEAR20', 'NOURISHED15', 'SKINBYJORDAN15', 'SPRING25', 'SUMMER20', 'TEST100', 'WELCOME15']
+country/ship_country mix customers vs order:
+  order ship_country != customer country: 0
+shipping zone vs ship_country mismatch: 0
+shipments per order:
+1    4975
+2      34
+
+======== 10. CUSTOMERS ========
+email_hash with multiple ids: 30 | ids involved: 64
+multi-id persons: do the ids have orders?
+n_orders
+2    29
+6     1
+customers w/o orders (newsletter-only?): 160 | accepts_marketing among them: 1.0
+customer created before period start: 10
+distinct persons ordering (valid statuses): 3874
+
+======== 11. MARKETING ========
+               spend  platform_reported_orders  platform_reported_revenue
+channel                                                                  
+Google Ads  11101.52                       718                   46453.65
+Influencer  12010.25                       511                   33823.03
+Meta Ads    38253.00                      1547                   99682.07
+TikTok Ads  14653.71                       360                   23239.42
+rows: 48 | expected 48 | negative: 0
+clicks>impressions: 0
+DONE

@@ -1,0 +1,251 @@
+=== persons with a valid order: 3828 | source distribution (clean):
+source
+meta_ads          1061
+organic_search     694
+google_ads         511
+direct             403
+influencer         394
+tiktok_ads         306
+unknown            236
+referral           223
+ambiguous labels (IG, Google) among these persons: 174
+
+=== 1. NEW vs REPEAT (observed in window; NOT LTV) ===
+orders per person:
+n_orders
+1    2961
+2     599
+3     226
+4      41
+5       1
+              orders     net_rev  contribution  contrib_per_order  margin  item_discount_share
+first order     3828 205,377.270   114,404.980             29.886   0.557                0.571
+repeat order    1178  78,107.470    46,576.380             39.539   0.596                0.357
+concentration of observed contribution: {'top 1%': np.float64(0.051), 'top 5%': np.float64(0.187), 'top 10%': np.float64(0.31), 'top 20%': np.float64(0.492)}
+buyers with contribution <= 0 in window: 154
+count   3,828.000
+mean       42.050
+std        38.190
+min       -43.130
+10%        11.540
+50%        30.600
+90%        90.930
+max       268.210
+
+days to second order (those who ordered twice): describe
+count   867.000
+mean     54.800
+std      27.000
+min      14.000
+25%      36.000
+50%      49.000
+75%      67.000
+90%      89.400
+max     210.000
+
+=== 90-day repeat rate by first-order month (all cohorts have >=90 days of follow-up) ===
+               n  rep  rate    lo    hi
+first_month                            
+2025-07      237   53 0.224 0.175 0.281
+2025-08      217   65 0.300 0.243 0.364
+2025-09      259   71 0.274 0.223 0.331
+2025-10      292   70 0.240 0.194 0.292
+2025-11      537  106 0.197 0.166 0.233
+2025-12      293   71 0.242 0.197 0.295
+2026-01      251   70 0.279 0.227 0.337
+2026-02      279   80 0.287 0.237 0.342
+2026-03      375   76 0.203 0.165 0.246
+
+[CENSORING] share ordering again at any time in window, by first-order month:
+first_month  2025-07  2025-08  2025-09  2025-10  2025-11  2025-12  2026-01  2026-02  2026-03  2026-04  2026-05  2026-06
+n            237.000  217.000  259.000  292.000  537.000  293.000  251.000  279.000  375.000  332.000  376.000  380.000
+ever          67.000   73.000   75.000   79.000  125.000   79.000   82.000   84.000   81.000   72.000   46.000    4.000
+rate           0.283    0.336    0.290    0.271    0.233    0.270    0.327    0.301    0.216    0.217    0.122    0.011
+
+=== 2. MARKETING: spend vs Shopify-side buyers ===
+CAC = spend / new buyers (first valid order in window) by source. strict = excl. ambiguous IG/Google; base = mapped labels; generous = base + unknown pro rata.
+                spend  buyers_strict  buyers_base  buyers_generous  CAC_upper(strict)  CAC_base  CAC_lower(generous)
+source                                                                                                              
+google_ads 11,101.520            416          511          544.570             26.690    21.730               20.390
+influencer 12,010.250            394          394          419.890             30.480    30.480               28.600
+meta_ads   38,253.000            982         1061        1,130.710             38.950    36.050               33.830
+tiktok_ads 14,653.710            306          306          326.100             47.890    47.890               44.940
+new buyers by source (all):
+source
+meta_ads          1061
+organic_search     694
+google_ads         511
+direct             403
+influencer         394
+tiktok_ads         306
+unknown            236
+referral           223
+
+=== CHANNEL UNIT ECONOMICS, mature cohort (first order 2025-07..2026-03; spend Jul-Mar; 90-day contribution per new buyer) ===
+                buyers  first_contrib  first_net_sales    c90  rep90  welcome_share  spend_Jul_Mar  CAC_base  first_contrib/CAC  c90/CAC  usable(n>=30)
+source                                                                                                                                                 
+direct             313         29.621           57.499 42.329  0.310          0.252            NaN       NaN                NaN      NaN           True
+google_ads         355         28.347           55.604 38.715  0.254          0.313      7,488.900    21.095              1.344    1.835           True
+influencer         289         27.364           56.440 33.021  0.145          0.183      8,919.140    30.862              0.887    1.070           True
+meta_ads           764         29.027           55.270 39.200  0.219          0.310     26,798.990    35.077              0.828    1.118           True
+organic_search     496         30.764           60.080 43.470  0.290          0.304            NaN       NaN                NaN      NaN           True
+referral           164         28.482           56.551 45.505  0.348          0.280            NaN       NaN                NaN      NaN           True
+tiktok_ads         193         29.944           57.716 34.221  0.104          0.233      9,641.690    49.957              0.599    0.685           True
+unknown            166         28.398           54.332 38.425  0.271          0.247            NaN       NaN                NaN      NaN           True
+
+unpaid sources (no spend in file): buyers 973 | first-order contribution 30.01 | 90-day contribution 43.45
+
+=== PLATFORM-REPORTED vs SHOPIFY-SIDE (12 months) ===
+source                            google_ads  influencer   meta_ads  tiktok_ads
+spend                             11,101.520  12,010.250 38,253.000  14,653.710
+plat_orders                          718.000     511.000  1,547.000     360.000
+plat_revenue                      46,453.650  33,823.030 99,682.070  23,239.420
+shop_orders_all                      680.000     470.000  1,365.000     342.000
+shop_net_sales_all                40,018.350  27,075.140 81,057.800  19,872.560
+shop_first_orders                    511.000     394.000  1,061.000     306.000
+shop_first_net_sales              28,640.000  21,896.020 59,283.000  17,537.160
+plat_ROAS                              4.184       2.816      2.606       1.586
+shop_first_ROAS(net sales/spend)       2.580       1.823      1.550       1.197
+shop_all_ROAS(net sales/spend)         3.605       2.254      2.119       1.356
+plat_orders/shop_first_orders          1.405       1.297      1.458       1.176
+plat_orders/shop_all_orders            1.056       1.087      1.133       1.053
+
+=== MONTHLY: total contribution vs total marketing spend (blended; order-month basis) ===
+         orders  contribution    net_rev  new_buyers      spend  blended_CAC  contribution_after_marketing  spend/net_rev
+month                                                                                                                    
+2025-07     238     6,171.440 11,309.510         237  3,809.030       16.070                     2,362.410          0.340
+2025-08     241     6,999.460 12,179.800         217  3,794.080       17.480                     3,205.380          0.310
+2025-09     304    10,337.450 17,333.310         259  4,558.180       17.600                     5,779.270          0.260
+2025-10     392    12,484.280 21,492.560         292  5,537.730       18.960                     6,946.550          0.260
+2025-11     634    16,950.380 34,678.990         537 11,033.630       20.550                     5,916.750          0.320
+2025-12     409    13,202.020 23,560.920         293  5,270.360       17.990                     7,931.660          0.220
+2026-01     389    13,007.620 22,442.660         251  5,053.010       20.130                     7,954.610          0.230
+2026-02     387    13,856.140 23,498.420         279  5,784.230       20.730                     8,071.910          0.250
+2026-03     514    16,732.740 29,965.600         375  8,008.470       21.360                     8,724.270          0.270
+2026-04     466    15,568.060 26,466.940         332  7,645.740       23.030                     7,922.320          0.290
+2026-05     510    16,688.990 28,985.510         376  8,069.520       21.460                     8,619.470          0.280
+2026-06     522    18,982.780 31,570.520         380  7,454.500       19.620                    11,528.280          0.240
+
+=== CX4: first order WELCOME15 vs no code, within source (unknown + ambiguous IG/Google EXCLUDED) ===
+first-time buyers in mature cohort excluded as unknown/ambiguous: 294 of 2740
+
+-- ALL mature cohorts
+                n_welcome  n_none    ok  rep_welcome  rep_none  fc_welcome  fc_none  retrate_welcome  retrate_none  acc_welcome  acc_none
+source                                                                                                                                   
+direct                 79     137  True        0.278     0.416      27.610   37.137            0.172         0.055        0.696     0.613
+google_ads             93     116  True        0.269     0.319      29.048   33.052            0.121         0.111        0.667     0.698
+influencer             53      33  True        0.094     0.152      24.768   32.682            0.067         0.115        0.585     0.636
+meta_ads              216     302  True        0.194     0.275      26.019   34.450            0.068         0.068        0.671     0.599
+organic_search        151     211  True        0.291     0.336      24.079   39.338            0.111         0.092        0.682     0.640
+referral               46      63  True        0.348     0.397      25.446   37.889            0.172         0.083        0.674     0.698
+tiktok_ads             45      90  True        0.089     0.111      27.665   37.785            0.105         0.103        0.578     0.556
+{'cells': '7 of 7', 'cov_welcome': np.float64(1.0), 'rep_w': np.float64(0.2313), 'rep_n': np.float64(0.2987), 'fc_w': np.float64(26.1595), 'fc_n': np.float64(35.9651), 'ret_w': np.float64(0.106), 'ret_n': np.float64(0.0847), 'acc_w': np.float64(0.6633), 'acc_n': np.float64(0.63), 'cells_rep_lower': 7, 'rep_diff_lo': np.float64(-0.109), 'rep_diff_hi': np.float64(-0.0239)}
+
+-- EXCLUDING Nov-Dec 2025 cohorts
+                n_welcome  n_none     ok  rep_welcome  rep_none  fc_welcome  fc_none  retrate_welcome  retrate_none  acc_welcome  acc_none
+source                                                                                                                                    
+direct                 57     113   True        0.281     0.451      26.141   38.138            0.147         0.054        0.667     0.619
+google_ads             72     101   True        0.278     0.317      29.122   34.242            0.071         0.114        0.653     0.673
+influencer             44      27  False        0.114     0.185      24.128   29.877            0.080         0.150        0.545     0.593
+meta_ads              162     266   True        0.185     0.274      26.552   34.636            0.079         0.066        0.704     0.602
+organic_search        120     160   True        0.283     0.338      24.900   38.356            0.089         0.098        0.658     0.625
+referral               30      51   True        0.367     0.373      28.135   36.467            0.125         0.093        0.600     0.706
+tiktok_ads             34      71   True        0.059     0.127      26.051   40.696            0.094         0.088        0.529     0.577
+{'cells': '6 of 7', 'cov_welcome': np.float64(0.9152), 'rep_w': np.float64(0.2379), 'rep_n': np.float64(0.3136), 'fc_w': np.float64(26.5389), 'fc_n': np.float64(36.486), 'ret_w': np.float64(0.0924), 'ret_n': np.float64(0.0834), 'acc_w': np.float64(0.6611), 'acc_n': np.float64(0.6253), 'cells_rep_lower': 6, 'rep_diff_lo': np.float64(-0.1261), 'rep_diff_hi': np.float64(-0.0262)}
+
+[SELECTION] accepts_marketing share by first-order arm (all sources incl unknown):
+            n  accepts
+arm                   
+none     1063    0.629
+other     914    0.613
+welcome   763    0.663
+
+NUMBER REGISTER (Phase 4)
+    id                                                                           metric            value                                                              numerator_denominator
+P4-001                                                       buyers with unknown source              236                                                             / 3828 buyers = 0.0617
+P4-002                                          buyers with ambiguous label (IG/Google)              174                                                             / 3828 buyers = 0.0455
+P4-003                          buyers with >=2 orders in window (censored lower bound)              867                                                             / 3828 buyers = 0.2265
+P4-004                                           share of orders that are repeat orders            0.235                                                                        1178 / 5006
+P4-005                                         share of contribution from repeat orders            0.289                                                               46576.38 / 160981.36
+P4-006                                                     contribution per first order           29.890                                                                / 3828 first orders
+P4-007                                                    contribution per repeat order           39.540                                                               / 1178 repeat orders
+P4-008                                                item-discount share: first orders            0.571                                                                        2184 / 3828
+P4-009                                               item-discount share: repeat orders            0.357                                                                         421 / 1178
+P4-010                                          top 1% of buyers: share of contribution            0.051                                                     39 buyers; 8146.01 / 160981.36
+P4-011                                          top 5% of buyers: share of contribution            0.187                                                   192 buyers; 30168.17 / 160981.36
+P4-012                                         top 10% of buyers: share of contribution            0.310                                                   383 buyers; 49930.26 / 160981.36
+P4-013                                         top 20% of buyers: share of contribution            0.492                                                   766 buyers; 79219.52 / 160981.36
+P4-014                                              buyers with total contribution <= 0              154                                                                             / 3828
+P4-015                                           median contribution per buyer (window)           30.600                                                                         mean 42.05
+P4-016                          median days to second order (among repeaters, censored)           49.000                                                                              n=867
+P4-017                                           90-day repeat rate, all mature cohorts            0.242                        662 / 2740 first-time buyers (first order 2025-07..2026-03)
+P4-018                                  90-day repeat rate range across 9 cohort months 0.1974 to 0.2995                                                               cohort sizes 217-537
+P4-019                                                            total marketing spend       76,018.480                                                           sum of 48 channel-months
+P4-020                                                                 spend google_ads       11,101.520                                                            = 0.1460 of total spend
+P4-021                                                                 spend influencer       12,010.250                                                            = 0.1580 of total spend
+P4-022                                                                   spend meta_ads       38,253.000                                                            = 0.5032 of total spend
+P4-023                                                                 spend tiktok_ads       14,653.710                                                            = 0.1928 of total spend
+P4-024                                                            CAC google_ads (base)           21.730                                                          11101.52 / 511 new buyers
+P4-025                                            CAC google_ads range strict..generous   20.39 .. 26.69                                                                  buyers 416 .. 545
+P4-026                                                            CAC influencer (base)           30.480                                                          12010.25 / 394 new buyers
+P4-027                                            CAC influencer range strict..generous   28.60 .. 30.48                                                                  buyers 394 .. 420
+P4-028                                                              CAC meta_ads (base)           36.050                                                         38253.00 / 1061 new buyers
+P4-029                                              CAC meta_ads range strict..generous   33.83 .. 38.95                                                                 buyers 982 .. 1131
+P4-030                                                            CAC tiktok_ads (base)           47.890                                                          14653.71 / 306 new buyers
+P4-031                                            CAC tiktok_ads range strict..generous   44.94 .. 47.89                                                                  buyers 306 .. 326
+P4-032                                         blended CAC, paid spend / ALL new buyers           19.860                                                         76018.48 / 3828 new buyers
+P4-033                      share of new buyers attributed to the 4 paid sources (base)            0.594                                                                        2272 / 3828
+P4-034               meta_ads: 90-day contribution per new buyer / CAC (Jul-Mar cohort)            1.118                                                          39.20 / 35.08; 764 buyers
+P4-035                               meta_ads: first-order contribution per buyer / CAC            0.828                                                                      29.03 / 35.08
+P4-036                                                     meta_ads: 90-day repeat rate            0.219                                                                              n=764
+P4-037             google_ads: 90-day contribution per new buyer / CAC (Jul-Mar cohort)            1.835                                                          38.72 / 21.10; 355 buyers
+P4-038                             google_ads: first-order contribution per buyer / CAC            1.344                                                                      28.35 / 21.10
+P4-039                                                   google_ads: 90-day repeat rate            0.254                                                                              n=355
+P4-040             tiktok_ads: 90-day contribution per new buyer / CAC (Jul-Mar cohort)            0.685                                                          34.22 / 49.96; 193 buyers
+P4-041                             tiktok_ads: first-order contribution per buyer / CAC            0.599                                                                      29.94 / 49.96
+P4-042                                                   tiktok_ads: 90-day repeat rate            0.104                                                                              n=193
+P4-043             influencer: 90-day contribution per new buyer / CAC (Jul-Mar cohort)            1.070                                                          33.02 / 30.86; 289 buyers
+P4-044                             influencer: first-order contribution per buyer / CAC            0.887                                                                      27.36 / 30.86
+P4-045                                                   influencer: 90-day repeat rate            0.145                                                                              n=289
+P4-046      unpaid sources (direct+organic+referral): 90-day contribution per new buyer           43.450                                                                              n=973
+P4-047                          paid sources: 90-day contribution per new buyer (all 4)           37.380                                                                             n=1601
+P4-048                                             platform-reported orders, 4 channels             3136 vs Shopify first orders from these 4 sources 2272; all orders by their buyers 2857
+P4-049                            platform-reported orders / Shopify total valid orders            0.626                                                                        3136 / 5006
+P4-050                                            platform-reported revenue, 4 channels      203,198.170                                                                                   
+P4-051                             google_ads: platform ROAS (reported revenue / spend)            4.184                                                                46453.65 / 11101.52
+P4-052                           google_ads: Shopify-side first-order net sales / spend            2.580                                                                28640.00 / 11101.52
+P4-053                               google_ads: platform orders / Shopify first orders            1.405                                                                          718 / 511
+P4-054                             influencer: platform ROAS (reported revenue / spend)            2.816                                                                33823.03 / 12010.25
+P4-055                           influencer: Shopify-side first-order net sales / spend            1.823                                                                21896.02 / 12010.25
+P4-056                               influencer: platform orders / Shopify first orders            1.297                                                                          511 / 394
+P4-057                               meta_ads: platform ROAS (reported revenue / spend)            2.606                                                                99682.07 / 38253.00
+P4-058                             meta_ads: Shopify-side first-order net sales / spend            1.550                                                                59283.00 / 38253.00
+P4-059                                 meta_ads: platform orders / Shopify first orders            1.458                                                                        1547 / 1061
+P4-060                             tiktok_ads: platform ROAS (reported revenue / spend)            1.586                                                                23239.42 / 14653.71
+P4-061                           tiktok_ads: Shopify-side first-order net sales / spend            1.197                                                                17537.16 / 14653.71
+P4-062                               tiktok_ads: platform orders / Shopify first orders            1.176                                                                          360 / 306
+P4-063                                            total contribution (before marketing)      160,981.360                                                                                   
+P4-064       total contribution minus total marketing spend (all channels, before opex)       84,962.880                                                               160981.36 - 76018.48
+P4-065                                                    marketing spend / net revenue            0.268                                                               76018.48 / 283484.74
+P4-066                                                   marketing spend / contribution            0.472                                                               76018.48 / 160981.36
+P4-067                                                  blended CAC range across months   16.07 to 23.03                                                                  12 monthly points
+P4-068                                             Nov 2025 spend share of annual spend            0.145                                                                11033.63 / 76018.48
+P4-069                                            Nov 2025 contribution after marketing        5,916.750                                                                16950.38 - 11033.63
+P4-070                   CX4 mature-cohort buyers excluded (unknown or ambiguous label)              294                                                                             / 2740
+P4-071                                            CX4 (all cohorts) usable source cells           7 of 7                                                 coverage of WELCOME15 buyers 1.000
+P4-072                    CX4 (all cohorts) standardised 90-day repeat: welcome vs none 0.2313 vs 0.2987               diff 95% bootstrap -0.1090..-0.0239; cells with lower welcome rate 7
+P4-073         CX4 (all cohorts) standardised first-order contribution: welcome vs none   26.16 vs 35.97                                              weights = WELCOME15 buyers per source
+P4-074  CX4 (all cohorts) standardised first-order return rate (units): welcome vs none 0.1060 vs 0.0847                                     returned units / paid units on the first order
+P4-075                       CX4 (all cohorts) accepts_marketing share: welcome vs none   0.663 vs 0.630                                                                 selection evidence
+P4-076                                           CX4 (excl Nov-Dec) usable source cells           6 of 7                                                 coverage of WELCOME15 buyers 0.915
+P4-077                   CX4 (excl Nov-Dec) standardised 90-day repeat: welcome vs none 0.2379 vs 0.3136               diff 95% bootstrap -0.1261..-0.0262; cells with lower welcome rate 6
+P4-078        CX4 (excl Nov-Dec) standardised first-order contribution: welcome vs none   26.54 vs 36.49                                              weights = WELCOME15 buyers per source
+P4-079 CX4 (excl Nov-Dec) standardised first-order return rate (units): welcome vs none 0.0924 vs 0.0834                                     returned units / paid units on the first order
+P4-080                      CX4 (excl Nov-Dec) accepts_marketing share: welcome vs none   0.661 vs 0.625                                                                 selection evidence
+P4-081                          platform-reported revenue / platform spend (4 channels)            2.673                                                               203198.17 / 76018.48
+P4-082                          Shopify-side first-order net sales / spend (4 channels)            1.675                                                               127356.18 / 76018.48
+P4-083                       Shopify-side net sales, all orders of these buyers / spend            2.210                                                               168023.85 / 76018.48
+P4-084      platform-reported revenue / Shopify net sales of all orders of these buyers            1.209                                                              203198.17 / 168023.85
+P4-085                        platform-reported revenue / Shopify first-order net sales            1.595                                                              203198.17 / 127356.18
+P4-086                     platform-reported orders / Shopify first orders (4 channels)            1.380                                                                        3136 / 2272
+P4-087                    platform-reported orders / Shopify all orders of these buyers            1.098                                                                        3136 / 2857

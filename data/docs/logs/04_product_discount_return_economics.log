@@ -1,0 +1,318 @@
+=== CONTRIBUTION BRIDGE (valid orders) ===
+                                          line         usd
+                                   Net revenue 283,484.740
+               + Shipping charged to customers  19,069.050
+            - COGS of items sold (incl. gifts) -77,686.400
+          + COGS recovered (restocked returns)     356.200
+                   - COGS of replacements sent    -277.700
+  - Postage (all shipments incl. replacements) -44,526.660
+                                   - Packaging  -7,298.600
+                                - Payment fees -11,950.670
+               - Return shipping paid by brand    -188.600
+= CONTRIBUTION (before marketing, before opex) 160,981.360
+[TIE-OUT] sum of line contributions 160981.36 == aggregate 160981.36; alt allocation 160981.36
+
+[SENSITIVITY] contribution under assumptions:
+                          case  contribution  margin
+             gift cogs $0/unit   161,258.360   0.569
+             gift cogs $1/unit   160,981.360   0.568
+             gift cogs $2/unit   160,704.360   0.567
+             gift cogs $3/unit   160,427.360   0.566
+     P12 cogs 19.10 (delta -2)   162,313.360   0.573
+     P12 cogs 23.10 (delta +2)   159,649.360   0.563
+postage imputation alt (-2.91)   160,984.270   0.568
+
+=== PRODUCT ECONOMICS (alloc: proportional to gross line value; P13 = free gift, no revenue) ===
+                                    name  units      gross  disc_rate  refund_rate_value  unit_return_rate    net_rev   cogs_net  ship_alloc  contribution  margin  contrib_per_unit  share_net_rev  share_contrib  rank_rev  rank_contrib  rank_contrib_alt  margin_alt
+product_id                                                                                                                                                                                                                                                              
+P03         Vitamin C Brightening Serum    1621 58,342.000      0.091              0.045             0.052 50,642.890 13,770.000   8,861.127    29,589.460   0.584            18.254          0.179          0.184     1.000         1.000             1.000       0.585
+P12         Complete Routine Set (Cleans    666 57,176.000      0.120              0.084             0.093 46,060.750 14,010.400   6,780.791    23,758.174   0.516            35.673          0.162          0.148     2.000         2.000             2.000       0.560
+P04         Hyaluronic Hydration Serum 3   1084 36,856.000      0.094              0.026             0.029 32,536.120  7,776.000   5,551.122    20,176.150   0.620            18.613          0.115          0.125     3.000         3.000             3.000       0.618
+P06         Retinol Night Cream 0.3% 50m    787 34,628.000      0.100              0.103             0.122 27,932.450  8,253.000   4,488.026    15,406.619   0.552            19.576          0.099          0.096     4.000         4.000             4.000       0.566
+P07         Daily Moisturizer SPF 30 50m    957 30,624.000      0.094              0.039             0.043 26,663.200  7,449.000   4,757.885    15,170.221   0.569            15.852          0.094          0.094     5.000         5.000             5.000       0.563
+P05           Niacinamide 10% Serum 30ml    841 24,389.000      0.089              0.035             0.045 21,436.100  4,956.000   4,040.857    13,278.758   0.619            15.789          0.076          0.082     6.000         6.000             6.000       0.605
+P01            Gentle Gel Cleanser 150ml   1036 22,792.000      0.094              0.019             0.023 20,256.270  4,977.600   4,890.975    11,901.773   0.588            11.488          0.071          0.074     7.000         7.000             7.000       0.542
+P08            Barrier Repair Cream 50ml    518 18,648.000      0.090              0.028             0.031 16,495.470  4,144.000   2,837.497     9,895.363   0.600            19.103          0.058          0.061     8.000         8.000             8.000       0.601
+P02         Foaming Cream Cleanser 150ml    563 13,512.000      0.081              0.017             0.018 12,201.240  3,029.400   2,679.712     7,197.521   0.590            12.784          0.043          0.045     9.000         9.000             9.000       0.554
+P10            Purifying Clay Mask 100ml    473 12,298.000      0.101              0.061             0.070 10,382.000  2,826.000   2,576.870     5,630.384   0.542            11.904          0.037          0.035    11.000        10.000            10.000       0.515
+P09               Peptide Eye Cream 15ml    329  9,870.000      0.098              0.058             0.073  8,386.780  2,467.500   1,564.976     4,665.689   0.556            14.181          0.030          0.029    12.000        11.000            11.000       0.544
+P11                    Body Lotion 400ml    426 11,928.000      0.095              0.029             0.047 10,491.470  3,672.000   2,795.422     4,588.246   0.437            10.771          0.037          0.029    10.000        12.000            12.000       0.419
+P13              Gift sachet (free gift)    277      0.000        NaN                NaN               NaN      0.000    277.000       0.000      -277.000     NaN            -1.000          0.000         -0.002    13.000        13.000            13.000         NaN
+[TIE-OUT] product contribution sum: 160981.36
+
+[CONTEXT] P03/P12 before vs after list-price change:
+                            units      gross    net_rev  contribution  contrib_per_unit
+product_id price_period                                                                
+P03        before             814 27,676.000 23,274.470    12,939.300            15.900
+           from 2026-01-15    807 30,666.000 27,368.420    16,650.160            20.630
+P12        before             358 30,072.000 23,289.630    11,489.320            32.090
+           from 2026-01-15    308 27,104.000 22,771.120    12,268.850            39.830
+
+=== ORDER GROUPS (valid orders) ===
+group
+freeship_only      44
+item_discount    2605
+no_code          2357
+
+=== A. DISCOUNT GROUPS (pooled, NOT mix-controlled) ===
+                 orders       gross       disc     net_rev  contribution  depth  aov_gross  units_per_order  contrib_per_order  margin  refund_rate_value  first_share
+group                                                                                                                                                                 
+freeship_only    44.000   1,498.000      0.000   1,447.000       545.100  0.000     34.045            1.114             12.389   0.377              0.034        0.886
+item_discount 2,605.000 174,343.000 32,423.890 132,661.240    69,047.070  0.186     66.926            1.851             26.506   0.520              0.065        0.838
+no_code       2,357.000 155,222.000      0.000 149,376.500    91,389.190  0.000     65.856            1.879             38.774   0.612              0.038        0.681
+
+=== B. CODES (line-item discounts; amt = discount $ recorded in discounts.csv) ===
+                rows  months  first_m   last_m   pct        amt            family
+code_clean                                                                       
+WELCOME15       1176      12  2025-07  2026-06 0.150 10,820.950           welcome
+BFCM30           412       2  2025-11  2025-12 0.300  9,952.500             event
+SPRING25         141       1  2026-03  2026-03 0.250  2,796.000             event
+LOYAL10          305      11  2025-08  2026-06 0.100  2,120.600           loyalty
+SUMMER20         185       2  2025-07  2025-08 0.200  2,056.000             event
+HOLIDAY15        103       1  2025-12  2025-12 0.150  1,058.400             event
+NEWYEAR20         65       1  2026-01  2026-01 0.200    882.600             event
+MOMS15            63       1  2026-05  2026-05 0.150    629.100             event
+SKINBYJORDAN15    59      11  2025-07  2026-06 0.150    571.800  creator_or_other
+AMELIA10          75      12  2025-07  2026-06 0.100    447.000  creator_or_other
+GLOWWITHSAM12     45      12  2025-07  2026-06 0.120    367.440  creator_or_other
+NOURISHED15       28      11  2025-07  2026-06 0.150    329.850  creator_or_other
+LABORDAY15        24       2  2025-08  2025-09 0.150    196.650             event
+DERMDIARY10       29      11  2025-08  2026-06 0.100    195.000  creator_or_other
+
+=== C. FAMILY of item-discount orders (pooled) ===
+                            orders      gross       disc    net_rev  contribution  depth  aov_gross  units_per_order  contrib_per_order  margin  refund_rate_value  first_share
+family                                                                                                                                                                         
+creator_or_other           215.000 14,057.000  1,724.750 11,461.760     6,277.100  0.123     65.381            1.800             29.196   0.548              0.071        0.967
+creator_or_other+welcome    21.000  1,436.000    373.820    983.490       504.190  0.260     68.381            1.762             24.009   0.513              0.074        1.000
+event                      909.000 65,204.000 16,020.550 44,885.450    21,276.220  0.246     71.732            1.936             23.406   0.474              0.087        0.880
+event+welcome               84.000  6,409.000  2,279.520  3,946.310     1,665.680  0.356     76.298            1.988             19.830   0.422              0.044        1.000
+loyalty                    305.000 21,206.000  2,120.600 18,343.800    10,483.550  0.100     69.528            2.033             34.372   0.572              0.039        0.000
+welcome                  1,071.000 66,031.000  9,904.650 53,040.430    28,840.330  0.150     61.654            1.729             26.928   0.544              0.055        1.000
+
+=== CROSS-ANALYSIS 1: item_discount vs no_code, stratified by customer type x paid units x has set (cells need n>=30 on BOTH sides) ===
+           cell  n_disc  n_nocode    ok  gross_disc  gross_no  cpo_disc  cpo_no  margin_disc  margin_no  depth_disc
+  first|u1|set0     964       764  True      31.610    31.774    13.715  20.173        0.564      0.660       0.177
+  first|u1|set1     113        55  True      85.381    86.473    25.600  41.814        0.425      0.532       0.196
+  first|u2|set0     522       410  True      63.236    64.222    25.268  36.442        0.524      0.590       0.191
+  first|u2|set1     120        72  True     117.417   117.792    34.646  66.154        0.431      0.588       0.218
+ first|u3+|set0     346       251  True     111.324   108.669    42.720  63.609        0.510      0.606       0.197
+ first|u3+|set1     119        53  True     164.546   163.906    61.002  95.030        0.502      0.615       0.222
+ repeat|u1|set0     162       249  True      32.136    31.747    16.435  20.490        0.610      0.655       0.133
+ repeat|u1|set1      12        20 False      86.333    85.800    28.007  37.970        0.447      0.506       0.129
+ repeat|u2|set0     126       225  True      62.024    62.911    27.049  36.337        0.535      0.591       0.137
+ repeat|u2|set1      11        25 False     119.273   118.440    49.170  69.566        0.527      0.607       0.100
+repeat|u3+|set0      88       189  True     114.159   112.116    54.518  67.121        0.561      0.617       0.126
+repeat|u3+|set1      22        44 False     164.091   170.205    81.804 102.464        0.580      0.627       0.141
+
+cells usable: 9/12 | coverage: discounted orders 0.983, no_code orders 0.962
+POOLED   contribution/order: discounted 26.51 vs no_code 38.77 (diff -12.27)
+STANDARD contribution/order (mix of discounted orders): discounted 25.93 vs no_code 38.38 (diff -12.45; bootstrap 95% CI -13.34..-11.53)
+STANDARD gross list value/order: discounted 65.78 vs no_code 65.66
+STANDARD margin (contribution / net revenue): discounted 0.5194 vs no_code 0.6096
+Simpson check: sign of pooled diff = -1.0 | sign of standardised diff = -1.0 | cells where discounted cpo > no_code cpo: 0 of 9
+
+=== CROSS-ANALYSIS 2: first-order discount depth vs 2nd order within 90 days (first orders 2025-07-01..2026-03-31) ===
+ALL first-order cohorts:
+           n  repeaters  gross  contrib_first  rate  ci_lo  ci_hi  usable
+bucket                                                                   
+none    1086        331 61.528         35.698 0.305  0.278  0.333    True
+<=12%     87         14 67.747         29.904 0.161  0.098  0.252    True
+~15%     822        196 62.291         27.056 0.238  0.211  0.269    True
+16-25%   310         55 64.742         22.536 0.177  0.139  0.224    True
+>=26%    435         66 80.926         21.257 0.152  0.121  0.188    True
+EXCLUDING Nov-Dec 2025 cohorts (BFCM/holiday):
+          n  repeaters  gross  contrib_first  rate  ci_lo  ci_hi  usable
+bucket                                                                  
+none    899        278 61.154         35.542 0.309  0.280  0.340    True
+<=12%    68          9 69.426         31.544 0.132  0.071  0.233    True
+~15%    588        138 60.553         26.595 0.235  0.202  0.271    True
+16-25%  309         55 64.809         22.542 0.178  0.139  0.225    True
+>=26%    46          5 75.261         22.786 0.109  0.047  0.230    True
+By acquisition-month season only none-vs-any (off-peak):
+               n  rate
+any                   
+discounted  1011 0.205
+none         899 0.309
+
+=== RETURN ECONOMICS ===
+-- by refund_type
+             rows  units     refund  ret_ship  repl_cost  repl_ship  cogs_back     impact
+refund_type                                                                              
+full          391    400 14,347.950   132.780      0.000      0.000    301.000 14,179.730
+partial        48     50    806.420    12.580      0.000      0.000     55.200    763.800
+replacement    30     30      0.000    43.240    277.700    237.350      0.000    558.290
+-- by handling
+                     rows     refund  restocked_rows     impact
+group                                                          
+refund_returnless     340 11,781.730               0 11,781.730
+refund_shipped_back    99  3,372.640              37  3,161.800
+replacement            30      0.000               0    558.290
+TOTAL economic impact of returns: 15501.82 = refunds 15154.37 + return ship 188.60 + replacement COGS 277.70 + replacement shipping 237.35 - COGS recovered 356.20
+-- by reason
+                     rows    refund    impact  shipped_back  replacement_share  share_rows  share_impact  impact_per_return
+reason_clean                                                                                                               
+not_as_expected       127 4,280.350 4,280.350         0.110              0.000       0.271         0.276             33.704
+irritation_breakout   116 4,056.860 4,056.860         0.112              0.000       0.247         0.262             34.973
+changed_mind           78 2,794.660 2,554.460         0.551              0.000       0.166         0.165             32.749
+no_visible_results     75 2,505.270 2,505.270         0.107              0.000       0.160         0.162             33.404
+damaged_leaked         55   910.330 1,493.300         0.182              0.545       0.117         0.096             27.151
+wrong_item             18   606.900   611.580         0.944              0.000       0.038         0.039             33.977
+
+-- unit return rate: ALL vs MATURE (orders <= 2026-05-16) by product
+            units  ret_units  rate  units_mature  ret_units_mature  rate_mature  ci_lo  ci_hi                        name
+product_id                                                                                                               
+P06           787     96.000 0.122           673            89.000        0.132  0.109  0.160  Retinol Night Cream 0.3% 5
+P12           666     62.000 0.093           586            53.000        0.090  0.070  0.116  Complete Routine Set (Clea
+P09           329     24.000 0.073           269            21.000        0.078  0.052  0.116      Peptide Eye Cream 15ml
+P10           473     33.000 0.070           414            30.000        0.072  0.051  0.102   Purifying Clay Mask 100ml
+P03          1621     85.000 0.052          1397            81.000        0.058  0.047  0.071  Vitamin C Brightening Seru
+P11           426     20.000 0.047           368            19.000        0.052  0.033  0.079           Body Lotion 400ml
+P07           957     41.000 0.043           822            38.000        0.046  0.034  0.063  Daily Moisturizer SPF 30 5
+P05           841     38.000 0.045           713            31.000        0.043  0.031  0.061  Niacinamide 10% Serum 30ml
+P08           518     16.000 0.031           429            15.000        0.035  0.021  0.057   Barrier Repair Cream 50ml
+P04          1084     31.000 0.029           912            27.000        0.030  0.020  0.043  Hyaluronic Hydration Serum
+P01          1036     24.000 0.023           894            22.000        0.025  0.016  0.037   Gentle Gel Cleanser 150ml
+P02           563     10.000 0.018           477             7.000        0.015  0.007  0.030  Foaming Cream Cleanser 150
+[TEST] max-min spread of product return rates (mature) = 0.1176; share of binomial simulations with spread >= observed: 0.0000
+
+-- by customer type (mature, paid units)
+        units  ret_units  rate  ci_lo  ci_hi  usable
+cust                                                
+first    5918    363.000 0.061  0.056  0.068    True
+repeat   2036     70.000 0.034  0.027  0.043    True
+
+-- CROSS-ANALYSIS 3: discount status, standardised by product (mature, paid units, product cells need >=30 units both sides)
+            units_item_discount  units_no_discount  ret_item_discount  ret_no_discount  rate_d  rate_n    ok
+product_id                                                                                                  
+P01                         484                410             18.000            4.000   0.037   0.010  True
+P02                         226                251              3.000            4.000   0.013   0.016  True
+P03                         733                664             49.000           32.000   0.067   0.048  True
+P04                         485                427             20.000            7.000   0.041   0.016  True
+P05                         372                341             18.000           13.000   0.048   0.038  True
+P06                         378                295             66.000           23.000   0.175   0.078  True
+P07                         441                381             22.000           16.000   0.050   0.042  True
+P08                         215                214              8.000            7.000   0.037   0.033  True
+P09                         152                117             14.000            7.000   0.092   0.060  True
+P10                         227                187             21.000            9.000   0.093   0.048  True
+P11                         200                168             12.000            7.000   0.060   0.042  True
+P12                         363                223             40.000           13.000   0.110   0.058  True
+POOLED return rate: discounted 0.0681 vs no_discount 0.0386 | STANDARDISED by product: 0.0681 vs 0.0398 | cells 12/12
+
+-- unit return rate by ORDER month (recent months censored):
+month  2025-07  2025-08  2025-09  2025-10   2025-11  2025-12  2026-01  2026-02  2026-03  2026-04  2026-05  2026-06
+units  397.000  403.000  553.000  688.000 1,308.000  782.000  728.000  726.000  976.000  847.000  933.000  960.000
+ret     23.000   18.000   18.000   37.000   107.000   34.000   34.000   36.000   59.000   44.000   45.000   25.000
+rate     0.058    0.045    0.033    0.054     0.082    0.043    0.047    0.050    0.060    0.052    0.048    0.026
+
+-- refund share vs net-sales-before-refunds share by product
+            refund_share  sales_share  index
+product_id                                  
+P06                0.213        0.104  2.038
+P12                0.280        0.168  1.660
+P10                0.044        0.037  1.197
+P09                0.034        0.030  1.137
+P03                0.158        0.178  0.887
+P07                0.072        0.093  0.772
+P05                0.051        0.074  0.685
+P11                0.020        0.036  0.562
+P08                0.032        0.057  0.558
+P04                0.058        0.112  0.514
+P01                0.026        0.069  0.372
+P02                0.014        0.042  0.339
+
+-- top return reasons within product (only reason cells with >=30 rows are interpretable)
+reason_clean  changed_mind  damaged_leaked  irritation_breakout  no_visible_results  not_as_expected  wrong_item
+product_id                                                                                                      
+P01                      4               2                    6                   3                9           0
+P02                      1               0                    3                   1                3           2
+P03                     16              13                   16                   8               28           3
+P04                      5               1                    9                   4                8           2
+P05                      5               7                    3                   7               13           3
+P06                     13               6                   42                  12               16           2
+P07                      6               2                    9                   9               13           1
+P08                      0               1                    5                   3                5           2
+P09                      4               2                    3                  13                2           0
+P10                      8               4                    6                   5                8           0
+P11                      3               9                    3                   1                3           1
+P12                     13               8                   11                   9               19           2
+
+NUMBER REGISTER (Phase 3)
+    id                                                                       metric       value                                                            numerator_denominator
+P3-001                                                     net revenue (recomputed) 283,484.740                                                      gross - discounts - refunds
+P3-002                             CONTRIBUTION total (gift cogs $1.00 placeholder) 160,981.360                                                                        160981.36
+P3-003                                                          contribution margin       0.568                                                160981.36 / 283484.74 net revenue
+P3-004                           COGS share of net revenue (net COGS / net revenue)       0.274                                                             77607.90 / 283484.74
+P3-005                                              postage+packaging / net revenue       0.183                                                             51825.26 / 283484.74
+P3-006                                       shipping charged / (postage+packaging)       0.368                                                              19069.05 / 51825.26
+P3-007                                                   payment fees / net revenue       0.042                                                             11950.67 / 283484.74
+P3-008                                               contribution if gift cogs = $0 161,258.360                                                                                 
+P3-009                                               contribution if gift cogs = $3 160,427.360                                                                                 
+P3-010                                                 contribution if P12 cogs +$2 159,649.360                                                                                 
+P3-011                                             top product by contribution: P03  29,589.460                                               share of total contribution 0.1838
+P3-012                                                               P12 set margin       0.516                                                              23758.17 / 46060.75
+P3-013                                      lowest-margin product (excl. gift): P11       0.437                                        contribution / net revenue of the product
+P3-014                                     highest-margin product (excl. gift): P04       0.620                                        contribution / net revenue of the product
+P3-015                            gift program cost (277 units x $1.00 placeholder)     277.000                                                                        277 units
+P3-016           products whose revenue rank differs from contribution rank (of 12)           3                                                                                 
+P3-017 products whose contribution rank changes with units-based allocation (of 12)           0                                                           allocation sensitivity
+P3-018                                        share of orders with an item discount       0.520                                                         2605 / 5006 valid orders
+P3-019                                                pooled margin: no_code orders       0.612                                                             91389.19 / 149376.50
+P3-020                                          pooled margin: item_discount orders       0.520                                                             69047.07 / 132661.24
+P3-021                                       pooled contribution per order: no_code      38.770                                                                    / 2357 orders
+P3-022                                 pooled contribution per order: item_discount      26.510                                                                    / 2605 orders
+P3-023                                                  total item-discount dollars  32,423.890                                                                                 
+P3-024                                          item-discount dollars / gross sales       0.098                                                             32423.89 / 331063.00
+P3-025                      share of item-discount dollars: family creator_or_other       0.053                                                               1724.75 / 32423.89
+P3-026              share of item-discount dollars: family creator_or_other+welcome       0.011                                                                373.82 / 32423.89
+P3-027                                 share of item-discount dollars: family event       0.494                                                              16020.55 / 32423.89
+P3-028                         share of item-discount dollars: family event+welcome       0.070                                                               2279.52 / 32423.89
+P3-029                               share of item-discount dollars: family loyalty       0.065                                                               2120.60 / 32423.89
+P3-030                               share of item-discount dollars: family welcome       0.305                                                               9904.65 / 32423.89
+P3-031                                          CX1 cells usable (n>=30 both sides)     9 of 12                                                                                 
+P3-032                            CX1 coverage of discounted orders by usable cells       0.983                                                                      2560 / 2605
+P3-033                                    CX1 pooled contribution/order, discounted      26.510                                                                                 
+P3-034                                       CX1 pooled contribution/order, no_code      38.770                                                                                 
+P3-035                              CX1 standardised contribution/order, discounted      25.930                               weights = mix of discounted orders in usable cells
+P3-036                                 CX1 standardised contribution/order, no_code      38.380                                                                     same weights
+P3-037           CX1 standardised difference (disc - no_code), 95% bootstrap CI low     -13.340                                               2000 resamples within cell x group
+P3-038          CX1 standardised difference (disc - no_code), 95% bootstrap CI high     -11.530                                                                                 
+P3-039                          CX1 standardised gross list value/order, discounted      65.780                                                                                 
+P3-040                             CX1 standardised gross list value/order, no_code      65.660                                                                                 
+P3-041                                          CX1 standardised margin, discounted       0.519                                                       contribution / net revenue
+P3-042                                             CX1 standardised margin, no_code       0.610                                                       contribution / net revenue
+P3-043                   CX2 repeat<=90d rate, first-order depth none (all cohorts)       0.305                                                          331 / 1086 first orders
+P3-044                  CX2 repeat<=90d rate, first-order depth <=12% (all cohorts)       0.161                                                             14 / 87 first orders
+P3-045                   CX2 repeat<=90d rate, first-order depth ~15% (all cohorts)       0.238                                                           196 / 822 first orders
+P3-046                 CX2 repeat<=90d rate, first-order depth 16-25% (all cohorts)       0.177                                                            55 / 310 first orders
+P3-047                  CX2 repeat<=90d rate, first-order depth >=26% (all cohorts)       0.152                                                            66 / 435 first orders
+P3-048                  CX2 repeat<=90d rate, first-order depth none (excl Nov-Dec)       0.309                                                           278 / 899 first orders
+P3-049                 CX2 repeat<=90d rate, first-order depth <=12% (excl Nov-Dec)       0.132                                                              9 / 68 first orders
+P3-050                  CX2 repeat<=90d rate, first-order depth ~15% (excl Nov-Dec)       0.235                                                           138 / 588 first orders
+P3-051                CX2 repeat<=90d rate, first-order depth 16-25% (excl Nov-Dec)       0.178                                                            55 / 309 first orders
+P3-052                 CX2 repeat<=90d rate, first-order depth >=26% (excl Nov-Dec)       0.109                                                              5 / 46 first orders
+P3-053                                   CX2 overall repeat<=90d rate (all cohorts)       0.242                                                          662 / 2740 first orders
+P3-054                               returns: total economic impact on contribution  15,501.820 refunds + return ship + replacement COGS + replacement shipping - recovered COGS
+P3-055                                 returns impact / contribution before returns       0.088                                                             15501.82 / 176483.18
+P3-056                       returns impact / net sales before refunds (gross-disc)       0.052                                                             15501.82 / 298639.11
+P3-057                               share of return rows paid as returnless refund       0.776                                                            364 / 469 return rows
+P3-058                               returnless refund dollars / all refund dollars       0.777                                                              11781.73 / 15154.37
+P3-059       restocked units / returned units (refund rows only, excl replacements)       0.084                                                                         38 / 450
+P3-060                             COGS written off on refunded-not-restocked units   4,017.200                                                     included in net COGS already
+P3-061            return rows with fulfilment reasons (damaged_leaked + wrong_item)          73                                                    73 / 469 return rows = 0.1557
+P3-062                                           impact share of fulfilment reasons       0.136                                                               2104.88 / 15501.82
+P3-063                       unit return rate, mature cohort (orders <= 2026-05-16)       0.054                                                            433 / 7954 paid units
+P3-064                                      unit return rate, all orders (censored)       0.052                                                                       480 / 9301
+P3-065                           mature unit return rate P06 Retinol Night Cream 0.       0.132                                               89 / 673 units; 95% CI 0.109-0.160
+P3-066                           mature unit return rate P12 Complete Routine Set (       0.090                                               53 / 586 units; 95% CI 0.070-0.116
+P3-067                           mature unit return rate P09 Peptide Eye Cream 15ml       0.078                                               21 / 269 units; 95% CI 0.052-0.116
+P3-068                           mature unit return rate P01 Gentle Gel Cleanser 15       0.025                                               22 / 894 units; 95% CI 0.016-0.037
+P3-069                           mature unit return rate P02 Foaming Cream Cleanser       0.015                                                7 / 477 units; 95% CI 0.007-0.030
+P3-070                                 product return-rate spread (max-min), mature       0.118                                         simulation p=0.000 under one common rate
+P3-071                                        mature unit return rate, first orders       0.061                                                                 363 / 5918 units
+P3-072                                       mature unit return rate, repeat orders       0.034                                                                  70 / 2036 units
+P3-073                              CX3 pooled mature return rate, discounted lines       0.068                                                      returned units / paid units
+P3-074                          CX3 pooled mature return rate, non-discounted lines       0.039          returned units / paid units, non-discounted lines, orders <= 2026-05-16
+P3-075                             CX3 product-standardised return rate, discounted       0.068                              weights = discounted units, 12 usable product cells
+P3-076                         CX3 product-standardised return rate, non-discounted       0.040                                                                     same weights
+P3-077                                      top-3 products' share of refund dollars       0.650                                                            ['P12', 'P06', 'P03']
+P3-078                           same 3 products' share of net sales before refunds       0.450                      net sales before refunds of these 3 products / all products
