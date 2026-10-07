@@ -1,0 +1,108 @@
+
+=== REVENUE BRIDGE (valid orders) ===
+                                                                   line       usd
+                                     Gross sales (sum qty x unit_price) 331063.00
+                                                       - Item discounts -32423.89
+                                             = Net sales before refunds 298639.11
+                                              - Refunds (refund_amount) -15154.37
+                                                          = NET REVENUE 283484.74
+               memo: shipping charged to customers (not in net revenue)  19069.05
+                                         memo: tax collected (excluded)  19330.40
+memo: free-shipping discount value (not charged, not in item discounts)    786.10
+
+[TIE-OUT] orders.subtotal vs lines: 0.00 | orders.discount_total vs lines: 0.00 | total_paid identity: 0.00 | refunds by order vs rows: 0.00
+[TIE-OUT] return rows by order status:
+ s                   refund_type
+paid                replacement     28
+partially_refunded  full           269
+                    partial         48
+                    replacement      2
+refunded            full           122
+
+=== KPIs ===
+                                                          kpi     value
+                                                 Valid orders 5006.0000
+              Distinct customers (persons) with a valid order 3828.0000
+                                Paid units (excl. free gifts) 9301.0000
+                                        Free gift units (P13)  277.0000
+                                Orders containing a free gift  277.0000
+                        Units per order (paid units / orders)    1.8580
+                                   AOV gross (gross / orders)   66.1332
+                          AOV after discounts, before refunds   59.6562
+                    AOV net of refunds (net revenue / orders)   56.6290
+             Net revenue per customer (net revenue / persons)   74.0556
+                       Orders per customer (orders / persons)    1.3077
+                                Orders with >=1 discount code 2649.0000
+                Share of orders with a code (of valid orders)    0.5292
+                                   Orders with >=1 return row  459.0000
+Share of orders with a return row (of valid orders, censored)    0.0917
+
+=== MONTHLY ===
+           gross  discounts  paid_units  orders  persons  first_time_orders  refunds_by_order_month  refunds_by_return_month  net_rev_order_basis  net_rev_cash_basis  disc_rate  refund_rate_order_basis  aov_after_disc  units_per_order  first_time_share
+month                                                                                                                                                                                                                                                       
+2025-07  13881.0    1837.02         397     238      237                237                  734.47                   394.62             11309.51            11649.36      0.132                    0.061          50.605            1.668             0.996
+2025-08  14074.0    1422.85         403     241      238                217                  471.35                   691.30             12179.80            11959.85      0.101                    0.037          52.494            1.672             0.900
+2025-09  18884.0    1044.27         553     304      302                259                  506.42                   359.05             17333.31            17480.68      0.055                    0.028          58.683            1.819             0.852
+2025-10  24149.0    1273.94         688     392      385                292                 1382.50                  1020.72             21492.56            21854.34      0.053                    0.060          58.355            1.755             0.745
+2025-11  48142.0   10368.73        1308     634      633                537                 3094.28                  1342.97             34678.99            36430.30      0.215                    0.082          59.579            2.063             0.847
+2025-12  27613.0    2990.76         782     409      402                293                 1061.32                  3004.98             23560.92            21617.26      0.108                    0.043          60.201            1.912             0.716
+2026-01  25465.0    1998.19         728     389      385                251                 1024.15                  1066.55             22442.66            22400.26      0.078                    0.044          60.326            1.871             0.645
+2026-02  26065.0    1370.98         726     387      384                279                 1195.60                   997.00             23498.42            23697.02      0.053                    0.048          63.809            1.876             0.721
+2026-03  36126.0    4271.44         976     514      511                375                 1888.96                  1510.51             29965.60            30344.05      0.118                    0.059          61.974            1.899             0.730
+2026-04  29475.0    1563.51         847     466      464                332                 1444.55                  1582.30             26466.94            26329.19      0.053                    0.052          59.896            1.818             0.712
+2026-05  32941.0    2424.76         933     510      507                376                 1530.73                  1583.83             28985.51            28932.41      0.074                    0.050          59.836            1.829             0.737
+2026-06  34248.0    1857.44         960     522      517                380                  820.04                  1600.54             31570.52            30790.02      0.054                    0.025          62.051            1.839             0.728
+
+[TIE-OUT] sum of months: gross 331063.00 (bridge 331063.00) | disc 32423.89 (32423.89) | refunds order-basis 15154.37 / return-basis 15154.37 (bridge 15154.37) | orders 5006 (5006)
+
+[DESCRIPTIVE] Jul-Dec 2025 vs Jan-Jun 2026 (calendar halves, not a trend test)
+  Jul-Dec 2025: orders 2218, gross 146743.00, net(order basis) 120555.09
+  Jan-Jun 2026: orders 2788, gross 184320.00, net(order basis) 162929.65
+[DESCRIPTIVE] peak month: 2025-11 net 34678.99, orders 634
+
+[CONTEXT] P03/P12 list-price levels used in the data:
+product_id  period             unit_price
+P03         before 2026-01-15  34.0          740
+            from 2026-01-15    38.0          722
+P12         before 2026-01-15  84.0          358
+            from 2026-01-15    88.0          308
+
+=== by ship_country ===
+                 gross      disc  orders  share_of_net_sales  aov_after_disc
+ship_country                                                                
+AU             11702.0   1233.28     175               0.035          59.821
+CA             20930.0   2284.12     324               0.062          57.549
+GB             14427.0   1624.64     207               0.043          61.847
+US            284004.0  27281.85    4300               0.860          59.703
+
+=== by sales_channel ===
+                  gross      disc  orders  share_of_net_sales  aov_after_disc
+sales_channel                                                                
+online_store   303984.0  29495.79    4593               0.919          59.762
+shop_app        27079.0   2928.10     413               0.081          58.477
+
+NUMBER REGISTER (Phase 2)
+   id                                           metric       value                                 numerator_denominator                                                                 filter
+P2-01                                      gross sales 331063.0000                                            8712 lines                                                     sum qty*unit_price
+P2-02                                   item discounts  32423.8900                               = 0.0979 of gross sales                                                      sum line_discount
+P2-03                                          refunds  15154.3700 469 return rows; = 0.0507 of net sales before refunds                                                      sum refund_amount
+P2-04                                      net revenue 283484.7400                           gross - discounts - refunds                                                                       
+P2-05                    shipping charged to customers  19069.0500                                                                                                                         memo
+P2-06              free-shipping discount value (memo)    786.1000                                             98 orders                                                                   memo
+P2-07                                     valid orders   5006.0000                                                                                                                             
+P2-08                     distinct customers (persons)   3828.0000                       email_hash with >=1 valid order                                                                       
+P2-09                                       paid units   9301.0000                    / 5006 orders = 1.8580 units/order                                                        excl. P13 gifts
+P2-10                                  free gift units    277.0000                                         on 277 orders                                                                    P13
+P2-11                                        AOV gross     66.1300                                      331063.00 / 5006                                                                       
+P2-12              AOV after discounts, before refunds     59.6600                                      298639.11 / 5006                                                                       
+P2-13                               AOV net of refunds     56.6300                                      283484.74 / 5006                                                                       
+P2-14                         net revenue per customer     74.0600                                      283484.74 / 3828                                                 within window, not LTV
+P2-15                              orders per customer      1.3080                                           5006 / 3828                                                          within window
+P2-16             share of orders with a discount code      0.5292                              2649 / 5006 valid orders                                                                       
+P2-17                share of orders with a return row      0.0917                               459 / 5006 valid orders                                             censored for recent orders
+P2-18                              orders Jul-Dec 2025   2218.0000                                                                                                  valid orders, calendar half
+P2-19                              orders Jan-Jun 2026   2788.0000                                                                                                  valid orders, calendar half
+P2-20           net revenue Jul-Dec 2025 (order basis) 120555.0900                                                                                            refunds attributed to order month
+P2-21           net revenue Jan-Jun 2026 (order basis) 162929.6500                                                       refunds attributed to order month; recent months have less return time
+P2-22 peak month by net revenue (order basis): 2025-11  34678.9900                                            634 orders                                                                       
+P2-23             US share of net sales before refunds      0.8596                  US (gross-disc) / total (gross-disc)                                                           valid orders

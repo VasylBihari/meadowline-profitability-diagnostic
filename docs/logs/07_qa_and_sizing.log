@@ -1,0 +1,114 @@
+=== PART A: independent recomputation from RAW files ===
+independent: gross 331063.00 disc 32423.89 refunds 15154.37 net 283484.74 contribution 160984.28
+[QA PASS] gross sales raw vs register P2-01 331063.00 vs 331063.00
+[QA PASS] item discounts raw vs P2-02 
+[QA PASS] refunds raw vs P2-03 
+[QA PASS] net revenue raw vs P2-04 
+[QA PASS] valid orders raw vs P2-07 5006
+[QA PASS] contribution raw-path vs P3-002 (tolerance $3.00: postage imputation method differs, known $2.91) difference +2.92
+
+=== PART B: automated QA ===
+[QA PASS] clean orders: unique order_id 
+[QA PASS] clean order_items: unique order_item_id 
+[QA PASS] clean returns: unique return_id and one row per order_item 
+[QA PASS] clean shipments: unique shipment_id 
+[QA PASS] clean discounts: unique discount_application_id 
+[QA PASS] clean persons: unique person_id 
+[QA PASS] no orphans: order_items.order_id -> orders 
+[QA PASS] no orphans: returns.order_item_id -> order_items 
+[QA PASS] no orphans: shipments.order_id -> orders 
+[QA PASS] no orphans: discounts.order_id -> orders 
+[QA PASS] every order has >=1 line 
+[QA PASS] raw minus removed equals clean (lines 8835-11, shipments 5043-7, returns 473-4, discounts 2848-2) 
+[QA PASS] order_frame: sum of order contribution equals bridge (P3-002) 160981.36
+[QA PASS] order_frame: sum of net revenue equals P2-04 
+[QA PASS] person_table: sum of contribution equals bridge 160981.36
+[QA PASS] person_table: buyers = 3828 and orders sum = 5006 
+[QA PASS] master register: unique IDs 235 entries
+[QA PASS] register wording: no 'profit' in metric names []
+register rows with a proportion value and no numerator/denominator text (review):
+Empty DataFrame
+Columns: [id, metric, value]
+Index: []
+
+=== PART C: sizing ===
+WELCOME15: item-discount dollars 10820.95 on 1176 orders (avg 9.20); stacked with another percentage code on 105 orders, welcome portion 916.30
+break-even: welcome first-time buyers n=763; avg discount on first order d=11.26; avg 90-day contribution c=36.34; break-even incremental share x*=d/(c+d)=0.237
+value of a 1 percentage-point lower unit return rate (refund dollars only, at 12-month volume):
+         units_12m  returned_units_12m  refunds_12m  refund_per_returned_unit  value_of_1pp_lower_return_rate
+product                                                                                                      
+P06            787              96.000    3,221.790                    33.560                         264.120
+P12            666              62.000    4,237.240                    68.340                         455.160
+P06 mature cohort by first order x discounted:
+                                units    ret    refund
+is_first_order_of_person disc                         
+False                    False     95  6.000   264.000
+                         True      60  2.000    66.000
+True                     False    200 17.000   660.000
+                         True     318 64.000 1,949.200
+P06 first-order discounted: 64 of 318 units returned (0.201) vs first-order not discounted 17 of 200 (0.085); excess units 37.0, refund dollars 1125.97
+TikTok Jul-Mar cohorts: spend 9641.69, 90-day contribution of its buyers 6604.60, shortfall -3037.09; contribution per $1 spend 0.685
+gap in 90-day contribution per $1 spend, Google minus TikTok: 1.150; 25% of 12-month TikTok spend = 3663.43; CEILING if Google kept its average return at that spend: 4213.67
+US orders without FREESHIP: shipping charged $0 by [gross>=50, net-of-discount>=50]:
+             orders  share_free  avg_charged
+g50   n50                                   
+False False    1873       0.000        5.950
+True  False     211       0.000        5.950
+      True     2147       1.000        0.000
+US order count by list-value bin ($5):
+bin
+[30, 35)    666
+[35, 40)    292
+[40, 45)    177
+[45, 50)     34
+[50, 55)    114
+[55, 60)    210
+[60, 65)    237
+[65, 70)    220
+[70, 75)    133
+[75, 80)    103
+orders in [45,50): 34; in [50,55): 114; ratio above/below 3.353
+US free-shipped orders without code: 50-75: 707 -> ceiling at $5.95 each 4206.65; 75+: 1440 -> 8568.00
+Nov vs Oct 2025: orders +0.617, spend +0.992, contribution after marketing -0.148 (5916.75 vs 6946.55); Dec CAM 7931.66
+Nov-Dec orders: BFCM30-only n=374 contribution/order 21.71, margin 0.428, gross/order 80.59; no_code n=298 contribution/order 39.75, margin 0.604, gross/order 68.18
+BFCM30 + WELCOME15 stacked: n=30 depth 0.405, contribution/order 17.45
+
+QA SUMMARY: {'PASS': 24}
+
+NUMBER REGISTER (Phase 5)
+    id                                                                                                   metric      value                                     numerator_denominator
+P5-001                                                           WELCOME15 item-discount dollars (valid orders) 10,820.950                                     1176 orders; avg 9.20
+P5-002                                                                          WELCOME15 dollars / net revenue      0.038                                      10820.95 / 283484.74
+P5-003                                                   orders stacking WELCOME15 with another percentage code    105.000                                    welcome portion 916.30
+P5-004                                            WELCOME15 break-even share of buyers that must be incremental      0.236 d/(c+d) = 11.26/(36.34+11.26); n=763 mature-cohort buyers
+P5-005                                                    WELCOME15 avg discount on first order (mature cohort)     11.260                                                     n=763
+P5-006                                              WELCOME15 avg 90-day contribution per buyer (mature cohort)     36.340                                                     n=763
+P5-007                                                                                  P06: refunds, 12 months  3,221.790                             96 returned units / 787 units
+P5-008                                          P06: value of 1 pp lower unit return rate (refund dollars only)    264.120                                    787 units x 1% x 33.56
+P5-009                                                                                  P12: refunds, 12 months  4,237.240                             62 returned units / 666 units
+P5-010                                          P12: value of 1 pp lower unit return rate (refund dollars only)    455.160                                    666 units x 1% x 68.34
+P5-011                                                    P06 first-order discounted: unit return rate (mature)      0.201                                            64 / 318 units
+P5-012                                                P06 first-order not discounted: unit return rate (mature)      0.085                                            17 / 200 units
+P5-013 P06 excess refund dollars if discounted first orders returned at the not-discounted rate (mature cohort)  1,125.970                                 37.0 excess units x 30.46
+P5-014                                                              P06 returns with reason irritation_breakout     42.000                                      / 91 P06 return rows
+P5-015                                                               P06 refund dollars for irritation_breakout  1,558.700                                    of 3221.79 P06 refunds
+P5-016                                        TikTok: 90-day contribution of Jul-Mar buyers minus Jul-Mar spend -3,037.090                                         6604.60 - 9641.69
+P5-017                                      meta_ads: 90-day contribution of Jul-Mar buyers minus Jul-Mar spend  3,149.580                                       29948.57 - 26798.99
+P5-018                                    influencer: 90-day contribution of Jul-Mar buyers minus Jul-Mar spend    623.960                                         9543.10 - 8919.14
+P5-019                                    google_ads: 90-day contribution of Jul-Mar buyers minus Jul-Mar spend  6,255.070                                        13743.97 - 7488.90
+P5-020                                                                             25% of 12-month TikTok spend  3,663.430                                                          
+P5-021         ceiling: shifting that amount at Google's average 90-day return (assumes no diminishing returns)  4,213.670                                 3663.43 x (1.835 - 0.685)
+P5-022                                                                     US orders with list value in [45,50)     34.000                                                          
+P5-023                                                                     US orders with list value in [50,55)    114.000                                               ratio 3.353
+P5-024                                                                 US free-shipped orders, list value 50-75    707.000     x $5.95 = 4206.65 ceiling before any behaviour change
+P5-025                                                                   US free-shipped orders, list value 75+  1,440.000     x $5.95 = 8568.00 ceiling before any behaviour change
+P5-026                                                           US orders: avg shipment cost, list value 50-75      8.560                                                     n=707
+P5-027                                                                           Nov vs Oct 2025: orders change      0.617                                             634 / 392 - 1
+P5-028                                                                  Nov vs Oct 2025: marketing spend change      0.992                                    11033.63 / 5537.73 - 1
+P5-029                                                     Nov vs Oct 2025: contribution after marketing change     -0.148                                     5916.75 / 6946.55 - 1
+P5-030                                                       Nov-Dec: BFCM30-only orders contribution per order     21.710                                                     n=374
+P5-031                                                           Nov-Dec: no_code orders contribution per order     39.750                                                     n=298
+P5-032                                                   Nov-Dec: BFCM30-only orders gross list value per order     80.590                                                     n=374
+P5-033                                                       Nov-Dec: no_code orders gross list value per order     68.180                                                     n=298
+P5-034                                       Nov-Dec: BFCM30+WELCOME15 stacked orders: depth (discount / gross)      0.405                                                      n=30
+P5-035                                                                            contribution margin (context)      0.568                                                    P3-003
