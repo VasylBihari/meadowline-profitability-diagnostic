@@ -1,0 +1,14 @@
+product_id,sku,product_name,category,launch_date,current_price,cogs,weight_g,bundle_components,status,cogs_source
+P01,MS-CLN-GEL150,Gentle Gel Cleanser 150ml,Cleanser,2023-03-01,22.0,4.8,230.0,,active,founder_spreadsheet
+P02,MS-CLN-CRM150,Foaming Cream Cleanser 150ml,Cleanser,2023-03-01,24.0,5.4,240.0,,active,founder_spreadsheet
+P03,MS-SER-VTC30,Vitamin C Brightening Serum 30ml,Serum,2023-03-01,38.0,8.5,120.0,,active,founder_spreadsheet
+P04,MS-SER-HYA30,Hyaluronic Hydration Serum 30ml,Serum,2023-06-15,34.0,7.2,120.0,,active,founder_spreadsheet
+P05,MS-SER-NIA30,Niacinamide 10% Serum 30ml,Serum,2024-01-20,29.0,5.9,115.0,,active,founder_spreadsheet
+P06,MS-TRT-RET50,Retinol Night Cream 0.3% 50ml,Treatment,2024-05-10,44.0,10.5,160.0,,active,founder_spreadsheet
+P07,MS-MOI-SPF50,Daily Moisturizer SPF 30 50ml,Moisturizer,2023-09-01,32.0,7.8,150.0,,active,founder_spreadsheet
+P08,MS-MOI-BAR50,Barrier Repair Cream 50ml,Moisturizer,2025-09-10,36.0,8.0,170.0,,active,founder_spreadsheet
+P09,MS-EYE-015,Peptide Eye Cream 15ml,Treatment,2025-10-15,30.0,7.5,70.0,,active,founder_spreadsheet
+P10,MS-MSK-CLY100,Purifying Clay Mask 100ml,Mask,2024-08-01,26.0,6.0,260.0,,active,founder_spreadsheet
+P11,MS-BDY-LOT400,Body Lotion 400ml,Body,2024-11-01,28.0,8.5,520.0,,active,founder_spreadsheet
+P12,MS-SET-RTN3,Complete Routine Set (Cleanser + Vitamin C + Moisturizer),Set,2024-04-01,88.0,21.1,600.0,P01|P03|P07,active,ASSUMPTION: sum of component cogs
+P13,MS-GIFT-SACHET,Gift sachet (free gift),Gift,,0.0,1.0,,,not_in_products_file,ASSUMPTION: gift cost unknown (PENDING)

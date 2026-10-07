@@ -1,0 +1,32 @@
+id,metric,value,numerator_denominator,period,filter,source_script
+DQ-R01,raw rows: customers,4068.0,,2025-07-01..2026-06-30,none,02_clean.py
+DQ-R02,raw rows: orders,5073.0,,2025-07-01..2026-06-30,none,02_clean.py
+DQ-R03,raw rows: order_items,8835.0,,2025-07-01..2026-06-30,none,02_clean.py
+DQ-R04,raw rows: products,12.0,,2025-07-01..2026-06-30,none,02_clean.py
+DQ-R05,raw rows: returns,473.0,,2025-07-01..2026-06-30,none,02_clean.py
+DQ-R06,raw rows: shipping_costs,5043.0,,2025-07-01..2026-06-30,none,02_clean.py
+DQ-R07,raw rows: discounts,2848.0,,2025-07-01..2026-06-30,none,02_clean.py
+DQ-R08,raw rows: marketing_spend,48.0,,2025-07-01..2026-06-30,none,02_clean.py
+DQ-O01,valid orders,5006.0,5006 / 5073 raw orders,2025-07-01..2026-06-30,"not voided, not test",02_clean.py
+DQ-O02,voided orders,61.0,/ 5073 raw orders,2025-07-01..2026-06-30,financial_status=voided,02_clean.py
+DQ-O03,test orders,6.0,/ 5073 raw orders,2025-07-01..2026-06-30,bogus gateway or TEST100,02_clean.py
+DQ-O04,voided orders total_paid (never collected),4201.97,,2025-07-01..2026-06-30,voided,02_clean.py
+DQ-I01,order lines after dedupe,8824.0,8835 raw - 11 duplicates,2025-07-01..2026-06-30,,02_clean.py
+DQ-I02,free gift lines (P13) on valid orders,277.0,,2025-07-01..2026-06-30,"unit_price=0, valid orders",02_clean.py
+DQ-C01,orders where subtotal != sum(qty*unit_price),0.0,/ 5073,2025-07-01..2026-06-30,after cleaning,02_clean.py
+DQ-C02,orders where discount_total != sum(line_discount),0.0,/ 5073,2025-07-01..2026-06-30,after cleaning,02_clean.py
+DQ-C03,orders where total_paid != subtotal-discount+shipping+tax,0.0,/ 5073,2025-07-01..2026-06-30,after cleaning,02_clean.py
+DQ-D01,discount rows after orphan removal,2846.0,2848 raw - 2,2025-07-01..2026-06-30,,02_clean.py
+DQ-S01,shipments after cleaning,5036.0,5043 raw - 4 dup - 3 orphan,2025-07-01..2026-06-30,,02_clean.py
+DQ-S02,imputed postage total,358.75,40 shipments,2025-07-01..2026-06-30,,02_clean.py
+DQ-S03,"imputed postage total, alt method (group median)",355.84,,2025-07-01..2026-06-30,sensitivity,02_clean.py
+DQ-RT01,returns after cleaning,469.0,473 raw - 4 orphan,2025-07-01..2026-06-30,,02_clean.py
+DQ-RT02,returns with date before order date,3.0,/ 469,2025-07-01..2026-06-30,,02_clean.py
+DQ-RT03,"refund_amount total, valid orders",15154.37,469 return rows,2025-07-01..2026-06-30,valid orders,02_clean.py
+DQ-RT04,"return_shipping_cost total, valid orders",188.6,,2025-07-01..2026-06-30,valid orders,02_clean.py
+DQ-CU01,"customer records with ambiguous source label (IG, Google)",182.0,/ 4068 customer records,2025-07-01..2026-06-30,,02_clean.py
+DQ-CU02,distinct persons (email_hash),4034.0,4068 customer records,2025-07-01..2026-06-30,,02_clean.py
+DQ-CU03,persons with >1 customer_id,30.0,/ 4034 persons,2025-07-01..2026-06-30,,02_clean.py
+DQ-CU04,persons with no order at all (newsletter-only),160.0,/ 4034 persons,2025-07-01..2026-06-30,,02_clean.py
+DQ-CU05,distinct persons with >=1 valid order,3828.0,/ 4034 persons,2025-07-01..2026-06-30,valid orders,02_clean.py
+DQ-CU06,persons whose record was created before 2025-07-01,10.0,/ 4034,2025-07-01..2026-06-30,'new vs repeat' cannot see pre-window history,02_clean.py

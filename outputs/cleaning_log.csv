@@ -1,0 +1,18 @@
+issue,rows,decision
+P12 cogs missing,1,cogs = sum of components = 21.10 (ASSUMPTION A1)
+P13 gift sachet absent from products,1,"added row; cogs = 1.0 per unit (ASSUMPTION A2: placeholder, not founder data)"
+voided orders,61,"excluded (no shipment, no fee, no returns)"
+test orders (bogus gateway / TEST100),6,excluded
+valid orders,5006,base for all metrics
+"product_id format variants (P-03, p03, p07)",5,normalised to upper-case without hyphen
+"injected duplicate lines (order_item_id>=600000, same order+product as an existing line)",11,removed (order subtotal does not include them)
+"discount rows for non-existent orders (8201, 8202)",2,removed
+"discount code variants ('LOYAL10 ', 'welcome15')",57,trimmed + upper-cased
+exact duplicate shipments (appended at end of file),4,removed
+shipments for non-existent orders (8301-8303),3,removed
+shipments with missing postage_cost,40,imputed (ASSUMPTION A3): weight-linear fit within service x zone; total imputed = 358.75 (group-median alt = 355.84)
+returns for non-existent orders (RET-X0001..4),4,removed
+return reason label variants (Title Case),38,normalised to snake_case
+"return date before order date (RET-00183, 00198, 00435)",3,"kept in economics (amounts valid, order is refunded); EXCLUDED from days-to-return stats (flag date_invalid)"
+acquisition_source label variants,504,"mapped to 8 values; Facebook/facebook_ads/IG->meta_ads, Google->google_ads (ASSUMPTION A4: IG and 'Google' are ambiguous)"
+persons with >1 customer_id (guest checkout),30,person_id = email_hash; source = earliest non-blank source among the person's records
