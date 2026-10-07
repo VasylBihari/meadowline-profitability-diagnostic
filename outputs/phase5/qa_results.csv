@@ -1,0 +1,25 @@
+check,status,detail
+gross sales raw vs register P2-01,PASS,331063.00 vs 331063.00
+item discounts raw vs P2-02,PASS,
+refunds raw vs P2-03,PASS,
+net revenue raw vs P2-04,PASS,
+valid orders raw vs P2-07,PASS,5006
+"contribution raw-path vs P3-002 (tolerance $3.00: postage imputation method differs, known $2.91)",PASS,difference +2.92
+clean orders: unique order_id,PASS,
+clean order_items: unique order_item_id,PASS,
+clean returns: unique return_id and one row per order_item,PASS,
+clean shipments: unique shipment_id,PASS,
+clean discounts: unique discount_application_id,PASS,
+clean persons: unique person_id,PASS,
+no orphans: order_items.order_id -> orders,PASS,
+no orphans: returns.order_item_id -> order_items,PASS,
+no orphans: shipments.order_id -> orders,PASS,
+no orphans: discounts.order_id -> orders,PASS,
+every order has >=1 line,PASS,
+"raw minus removed equals clean (lines 8835-11, shipments 5043-7, returns 473-4, discounts 2848-2)",PASS,
+order_frame: sum of order contribution equals bridge (P3-002),PASS,160981.36
+order_frame: sum of net revenue equals P2-04,PASS,
+person_table: sum of contribution equals bridge,PASS,160981.36
+person_table: buyers = 3828 and orders sum = 5006,PASS,
+master register: unique IDs,PASS,235 entries
+register wording: no 'profit' in metric names,PASS,[]

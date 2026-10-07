@@ -1,0 +1,36 @@
+id,metric,value,numerator_denominator,filter
+P5-001,WELCOME15 item-discount dollars (valid orders),10820.95,1176 orders; avg 9.20,
+P5-002,WELCOME15 dollars / net revenue,0.0382,10820.95 / 283484.74,
+P5-003,orders stacking WELCOME15 with another percentage code,105.0,welcome portion 916.30,
+P5-004,WELCOME15 break-even share of buyers that must be incremental,0.2365,d/(c+d) = 11.26/(36.34+11.26); n=763 mature-cohort buyers,assumes non-incremental buyer would have bought at full price; ignores repeat-rate difference
+P5-005,WELCOME15 avg discount on first order (mature cohort),11.26,n=763,
+P5-006,WELCOME15 avg 90-day contribution per buyer (mature cohort),36.34,n=763,
+P5-007,"P06: refunds, 12 months",3221.79,96 returned units / 787 units,
+P5-008,P06: value of 1 pp lower unit return rate (refund dollars only),264.12,787 units x 1% x 33.56,"scaling, not a forecast"
+P5-009,"P12: refunds, 12 months",4237.24,62 returned units / 666 units,
+P5-010,P12: value of 1 pp lower unit return rate (refund dollars only),455.16,666 units x 1% x 68.34,"scaling, not a forecast"
+P5-011,P06 first-order discounted: unit return rate (mature),0.2013,64 / 318 units,
+P5-012,P06 first-order not discounted: unit return rate (mature),0.085,17 / 200 units,
+P5-013,P06 excess refund dollars if discounted first orders returned at the not-discounted rate (mature cohort),1125.97,37.0 excess units x 30.46,"associative upper bound, not cause"
+P5-014,P06 returns with reason irritation_breakout,42.0,/ 91 P06 return rows,
+P5-015,P06 refund dollars for irritation_breakout,1558.7,of 3221.79 P06 refunds,
+P5-016,TikTok: 90-day contribution of Jul-Mar buyers minus Jul-Mar spend,-3037.09,6604.60 - 9641.69,mature cohort; before opex
+P5-017,meta_ads: 90-day contribution of Jul-Mar buyers minus Jul-Mar spend,3149.58,29948.57 - 26798.99,mature cohort; before opex
+P5-018,influencer: 90-day contribution of Jul-Mar buyers minus Jul-Mar spend,623.96,9543.10 - 8919.14,mature cohort; before opex
+P5-019,google_ads: 90-day contribution of Jul-Mar buyers minus Jul-Mar spend,6255.07,13743.97 - 7488.90,mature cohort; before opex
+P5-020,25% of 12-month TikTok spend,3663.43,,
+P5-021,ceiling: shifting that amount at Google's average 90-day return (assumes no diminishing returns),4213.67,3663.43 x (1.835 - 0.685),UPPER BOUND; Google marginal CAC is unknown and likely higher
+P5-022,"US orders with list value in [45,50)",34.0,,
+P5-023,"US orders with list value in [50,55)",114.0,ratio 3.353,bunching check at free-shipping threshold
+P5-024,"US free-shipped orders, list value 50-75",707.0,x $5.95 = 4206.65 ceiling before any behaviour change,UPPER BOUND
+P5-025,"US free-shipped orders, list value 75+",1440.0,x $5.95 = 8568.00 ceiling before any behaviour change,UPPER BOUND
+P5-026,"US orders: avg shipment cost, list value 50-75",8.56,n=707,
+P5-027,Nov vs Oct 2025: orders change,0.6173,634 / 392 - 1,
+P5-028,Nov vs Oct 2025: marketing spend change,0.9924,11033.63 / 5537.73 - 1,
+P5-029,Nov vs Oct 2025: contribution after marketing change,-0.1482,5916.75 / 6946.55 - 1,order-month basis; Oct/Nov refunds mostly complete
+P5-030,Nov-Dec: BFCM30-only orders contribution per order,21.71,n=374,NOT mix-controlled
+P5-031,Nov-Dec: no_code orders contribution per order,39.75,n=298,NOT mix-controlled
+P5-032,Nov-Dec: BFCM30-only orders gross list value per order,80.59,n=374,
+P5-033,Nov-Dec: no_code orders gross list value per order,68.18,n=298,
+P5-034,Nov-Dec: BFCM30+WELCOME15 stacked orders: depth (discount / gross),0.405,n=30,
+P5-035,contribution margin (context),0.5679,P3-003,

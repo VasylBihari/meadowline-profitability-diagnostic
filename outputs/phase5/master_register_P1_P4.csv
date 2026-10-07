@@ -1,0 +1,236 @@
+id,metric,value,numerator_denominator,phase
+DQ-R01,raw rows: customers,4068.0,,P1
+DQ-R02,raw rows: orders,5073.0,,P1
+DQ-R03,raw rows: order_items,8835.0,,P1
+DQ-R04,raw rows: products,12.0,,P1
+DQ-R05,raw rows: returns,473.0,,P1
+DQ-R06,raw rows: shipping_costs,5043.0,,P1
+DQ-R07,raw rows: discounts,2848.0,,P1
+DQ-R08,raw rows: marketing_spend,48.0,,P1
+DQ-O01,valid orders,5006.0,5006 / 5073 raw orders,P1
+DQ-O02,voided orders,61.0,/ 5073 raw orders,P1
+DQ-O03,test orders,6.0,/ 5073 raw orders,P1
+DQ-O04,voided orders total_paid (never collected),4201.97,,P1
+DQ-I01,order lines after dedupe,8824.0,8835 raw - 11 duplicates,P1
+DQ-I02,free gift lines (P13) on valid orders,277.0,,P1
+DQ-C01,orders where subtotal != sum(qty*unit_price),0.0,/ 5073,P1
+DQ-C02,orders where discount_total != sum(line_discount),0.0,/ 5073,P1
+DQ-C03,orders where total_paid != subtotal-discount+shipping+tax,0.0,/ 5073,P1
+DQ-D01,discount rows after orphan removal,2846.0,2848 raw - 2,P1
+DQ-S01,shipments after cleaning,5036.0,5043 raw - 4 dup - 3 orphan,P1
+DQ-S02,imputed postage total,358.75,40 shipments,P1
+DQ-S03,"imputed postage total, alt method (group median)",355.84,,P1
+DQ-RT01,returns after cleaning,469.0,473 raw - 4 orphan,P1
+DQ-RT02,returns with date before order date,3.0,/ 469,P1
+DQ-RT03,"refund_amount total, valid orders",15154.37,469 return rows,P1
+DQ-RT04,"return_shipping_cost total, valid orders",188.6,,P1
+DQ-CU01,"customer records with ambiguous source label (IG, Google)",182.0,/ 4068 customer records,P1
+DQ-CU02,distinct persons (email_hash),4034.0,4068 customer records,P1
+DQ-CU03,persons with >1 customer_id,30.0,/ 4034 persons,P1
+DQ-CU04,persons with no order at all (newsletter-only),160.0,/ 4034 persons,P1
+DQ-CU05,distinct persons with >=1 valid order,3828.0,/ 4034 persons,P1
+DQ-CU06,persons whose record was created before 2025-07-01,10.0,/ 4034,P1
+P2-01,gross sales,331063.0,8712 lines,P2
+P2-02,item discounts,32423.89,= 0.0979 of gross sales,P2
+P2-03,refunds,15154.37,469 return rows; = 0.0507 of net sales before refunds,P2
+P2-04,net revenue,283484.74,gross - discounts - refunds,P2
+P2-05,shipping charged to customers,19069.05,,P2
+P2-06,free-shipping discount value (memo),786.1,98 orders,P2
+P2-07,valid orders,5006.0,,P2
+P2-08,distinct customers (persons),3828.0,email_hash with >=1 valid order,P2
+P2-09,paid units,9301.0,/ 5006 orders = 1.8580 units/order,P2
+P2-10,free gift units,277.0,on 277 orders,P2
+P2-11,AOV gross,66.13,331063.00 / 5006,P2
+P2-12,"AOV after discounts, before refunds",59.66,298639.11 / 5006,P2
+P2-13,AOV net of refunds,56.63,283484.74 / 5006,P2
+P2-14,net revenue per customer,74.06,283484.74 / 3828,P2
+P2-15,orders per customer,1.308,5006 / 3828,P2
+P2-16,share of orders with a discount code,0.5292,2649 / 5006 valid orders,P2
+P2-17,share of orders with a return row,0.0917,459 / 5006 valid orders,P2
+P2-18,orders Jul-Dec 2025,2218.0,,P2
+P2-19,orders Jan-Jun 2026,2788.0,,P2
+P2-20,net revenue Jul-Dec 2025 (order basis),120555.09,,P2
+P2-21,net revenue Jan-Jun 2026 (order basis),162929.65,,P2
+P2-22,peak month by net revenue (order basis): 2025-11,34678.99,634 orders,P2
+P2-23,US share of net sales before refunds,0.8596,US (gross-disc) / total (gross-disc),P2
+P3-001,net revenue (recomputed),283484.74,gross - discounts - refunds,P3
+P3-002,CONTRIBUTION total (gift cogs $1.00 placeholder),160981.36,160981.36,P3
+P3-003,contribution margin,0.5679,160981.36 / 283484.74 net revenue,P3
+P3-004,COGS share of net revenue (net COGS / net revenue),0.2738,77607.90 / 283484.74,P3
+P3-005,postage+packaging / net revenue,0.1828,51825.26 / 283484.74,P3
+P3-006,shipping charged / (postage+packaging),0.3679,19069.05 / 51825.26,P3
+P3-007,payment fees / net revenue,0.0422,11950.67 / 283484.74,P3
+P3-008,contribution if gift cogs = $0,161258.36,,P3
+P3-009,contribution if gift cogs = $3,160427.36,,P3
+P3-010,contribution if P12 cogs +$2,159649.36,,P3
+P3-011,top product by contribution: P03,29589.46,share of total contribution 0.1838,P3
+P3-012,P12 set margin,0.5158,23758.17 / 46060.75,P3
+P3-013,lowest-margin product (excl. gift): P11,0.4373,contribution / net revenue of the product,P3
+P3-014,highest-margin product (excl. gift): P04,0.6201,contribution / net revenue of the product,P3
+P3-015,gift program cost (277 units x $1.00 placeholder),277.0,277 units,P3
+P3-016,products whose revenue rank differs from contribution rank (of 12),3,,P3
+P3-017,products whose contribution rank changes with units-based allocation (of 12),0,allocation sensitivity,P3
+P3-018,share of orders with an item discount,0.5204,2605 / 5006 valid orders,P3
+P3-019,pooled margin: no_code orders,0.6118,91389.19 / 149376.50,P3
+P3-020,pooled margin: item_discount orders,0.5205,69047.07 / 132661.24,P3
+P3-021,pooled contribution per order: no_code,38.77,/ 2357 orders,P3
+P3-022,pooled contribution per order: item_discount,26.51,/ 2605 orders,P3
+P3-023,total item-discount dollars,32423.89,,P3
+P3-024,item-discount dollars / gross sales,0.0979,32423.89 / 331063.00,P3
+P3-025,share of item-discount dollars: family creator_or_other,0.0532,1724.75 / 32423.89,P3
+P3-026,share of item-discount dollars: family creator_or_other+welcome,0.0115,373.82 / 32423.89,P3
+P3-027,share of item-discount dollars: family event,0.4941,16020.55 / 32423.89,P3
+P3-028,share of item-discount dollars: family event+welcome,0.0703,2279.52 / 32423.89,P3
+P3-029,share of item-discount dollars: family loyalty,0.0654,2120.60 / 32423.89,P3
+P3-030,share of item-discount dollars: family welcome,0.3055,9904.65 / 32423.89,P3
+P3-031,CX1 cells usable (n>=30 both sides),9 of 12,,P3
+P3-032,CX1 coverage of discounted orders by usable cells,0.9827,2560 / 2605,P3
+P3-033,"CX1 pooled contribution/order, discounted",26.51,,P3
+P3-034,"CX1 pooled contribution/order, no_code",38.77,,P3
+P3-035,"CX1 standardised contribution/order, discounted",25.93,weights = mix of discounted orders in usable cells,P3
+P3-036,"CX1 standardised contribution/order, no_code",38.38,same weights,P3
+P3-037,"CX1 standardised difference (disc - no_code), 95% bootstrap CI low",-13.34,2000 resamples within cell x group,P3
+P3-038,"CX1 standardised difference (disc - no_code), 95% bootstrap CI high",-11.53,,P3
+P3-039,"CX1 standardised gross list value/order, discounted",65.78,,P3
+P3-040,"CX1 standardised gross list value/order, no_code",65.66,,P3
+P3-041,"CX1 standardised margin, discounted",0.5194,contribution / net revenue,P3
+P3-042,"CX1 standardised margin, no_code",0.6096,contribution / net revenue,P3
+P3-043,"CX2 repeat<=90d rate, first-order depth none (all cohorts)",0.3048,331 / 1086 first orders,P3
+P3-044,"CX2 repeat<=90d rate, first-order depth <=12% (all cohorts)",0.1609,14 / 87 first orders,P3
+P3-045,"CX2 repeat<=90d rate, first-order depth ~15% (all cohorts)",0.2384,196 / 822 first orders,P3
+P3-046,"CX2 repeat<=90d rate, first-order depth 16-25% (all cohorts)",0.1774,55 / 310 first orders,P3
+P3-047,"CX2 repeat<=90d rate, first-order depth >=26% (all cohorts)",0.1517,66 / 435 first orders,P3
+P3-048,"CX2 repeat<=90d rate, first-order depth none (excl Nov-Dec)",0.3092,278 / 899 first orders,P3
+P3-049,"CX2 repeat<=90d rate, first-order depth <=12% (excl Nov-Dec)",0.1324,9 / 68 first orders,P3
+P3-050,"CX2 repeat<=90d rate, first-order depth ~15% (excl Nov-Dec)",0.2347,138 / 588 first orders,P3
+P3-051,"CX2 repeat<=90d rate, first-order depth 16-25% (excl Nov-Dec)",0.178,55 / 309 first orders,P3
+P3-052,"CX2 repeat<=90d rate, first-order depth >=26% (excl Nov-Dec)",0.1087,5 / 46 first orders,P3
+P3-053,CX2 overall repeat<=90d rate (all cohorts),0.2416,662 / 2740 first orders,P3
+P3-054,returns: total economic impact on contribution,15501.82,refunds + return ship + replacement COGS + replacement shipping - recovered COGS,P3
+P3-055,returns impact / contribution before returns,0.0878,15501.82 / 176483.18,P3
+P3-056,returns impact / net sales before refunds (gross-disc),0.0519,15501.82 / 298639.11,P3
+P3-057,share of return rows paid as returnless refund,0.7761,364 / 469 return rows,P3
+P3-058,returnless refund dollars / all refund dollars,0.7774,11781.73 / 15154.37,P3
+P3-059,"restocked units / returned units (refund rows only, excl replacements)",0.0844,38 / 450,P3
+P3-060,COGS written off on refunded-not-restocked units,4017.2,included in net COGS already,P3
+P3-061,return rows with fulfilment reasons (damaged_leaked + wrong_item),73,73 / 469 return rows = 0.1557,P3
+P3-062,impact share of fulfilment reasons,0.1358,2104.88 / 15501.82,P3
+P3-063,"unit return rate, mature cohort (orders <= 2026-05-16)",0.0544,433 / 7954 paid units,P3
+P3-064,"unit return rate, all orders (censored)",0.0516,480 / 9301,P3
+P3-065,mature unit return rate P06 Retinol Night Cream 0.,0.1322,89 / 673 units; 95% CI 0.109-0.160,P3
+P3-066,mature unit return rate P12 Complete Routine Set (,0.0904,53 / 586 units; 95% CI 0.070-0.116,P3
+P3-067,mature unit return rate P09 Peptide Eye Cream 15ml,0.0781,21 / 269 units; 95% CI 0.052-0.116,P3
+P3-068,mature unit return rate P01 Gentle Gel Cleanser 15,0.0246,22 / 894 units; 95% CI 0.016-0.037,P3
+P3-069,mature unit return rate P02 Foaming Cream Cleanser,0.0147,7 / 477 units; 95% CI 0.007-0.030,P3
+P3-070,"product return-rate spread (max-min), mature",0.1176,simulation p=0.000 under one common rate,P3
+P3-071,"mature unit return rate, first orders",0.0613,363 / 5918 units,P3
+P3-072,"mature unit return rate, repeat orders",0.0344,70 / 2036 units,P3
+P3-073,"CX3 pooled mature return rate, discounted lines",0.0681,returned units / paid units,P3
+P3-074,"CX3 pooled mature return rate, non-discounted lines",0.0386,"returned units / paid units, non-discounted lines, orders <= 2026-05-16",P3
+P3-075,"CX3 product-standardised return rate, discounted",0.0681,"weights = discounted units, 12 usable product cells",P3
+P3-076,"CX3 product-standardised return rate, non-discounted",0.0398,same weights,P3
+P3-077,top-3 products' share of refund dollars,0.6497,"['P12', 'P06', 'P03']",P3
+P3-078,same 3 products' share of net sales before refunds,0.4503,net sales before refunds of these 3 products / all products,P3
+P3b-001,"CX3b product x first/repeat standardised mature return rate, discounted",0.0681,"24 usable cells, coverage 1.000 of discounted units",P3b
+P3b-002,"CX3b same, non-discounted",0.0422,same weights,P3b
+P3b-003,CX3b difference 95% bootstrap interval low,0.0152,,P3b
+P3b-004,CX3b difference 95% bootstrap interval high,0.036,,P3b
+P3b-005,CX3b cells where discounted return rate > non-discounted,17 of 24,,P3b
+P3b-006,"shipping recovery, original shipments: charged / cost",0.3696,19069.05 / 51587.91,P3b
+P3b-007,"net shipping result, original shipments (charged - cost)",-32518.86,,P3b
+P3b-008,shipping recovery zone AU,0.3973,"175 orders; avg charged 9.55, avg cost 24.03",P3b
+P3b-009,shipping recovery zone CA,0.5939,"324 orders; avg charged 9.75, avg cost 16.42",P3b
+P3b-010,shipping recovery zone GB,0.4065,"207 orders; avg charged 8.88, avg cost 21.85",P3b
+P3b-011,shipping recovery zone US_domestic,0.3303,"4300 orders; avg charged 2.88, avg cost 8.73",P3b
+P3b-012,"US domestic recovery, basket <50",0.8148,1939 orders; share charged $0 0.034,P3b
+P3b-013,"US domestic recovery, basket 50-75",0.156,916 orders; share charged $0 0.774,P3b
+P3b-014,"US domestic recovery, basket 75-100",0.0039,605 orders; share charged $0 0.993,P3b
+P3b-015,"US domestic recovery, basket 100+",0.0,840 orders; share charged $0 1.000,P3b
+P3b-016,US orders with $0 shipping and no FREESHIP code,2147,/ 4300 US orders,P3b
+P4-001,buyers with unknown source,236,/ 3828 buyers = 0.0617,P4
+P4-002,buyers with ambiguous label (IG/Google),174,/ 3828 buyers = 0.0455,P4
+P4-003,buyers with >=2 orders in window (censored lower bound),867,/ 3828 buyers = 0.2265,P4
+P4-004,share of orders that are repeat orders,0.2353,1178 / 5006,P4
+P4-005,share of contribution from repeat orders,0.2893,46576.38 / 160981.36,P4
+P4-006,contribution per first order,29.89,/ 3828 first orders,P4
+P4-007,contribution per repeat order,39.54,/ 1178 repeat orders,P4
+P4-008,item-discount share: first orders,0.5705,2184 / 3828,P4
+P4-009,item-discount share: repeat orders,0.3574,421 / 1178,P4
+P4-010,top 1% of buyers: share of contribution,0.0506,39 buyers; 8146.01 / 160981.36,P4
+P4-011,top 5% of buyers: share of contribution,0.1874,192 buyers; 30168.17 / 160981.36,P4
+P4-012,top 10% of buyers: share of contribution,0.3102,383 buyers; 49930.26 / 160981.36,P4
+P4-013,top 20% of buyers: share of contribution,0.4921,766 buyers; 79219.52 / 160981.36,P4
+P4-014,buyers with total contribution <= 0,154,/ 3828,P4
+P4-015,median contribution per buyer (window),30.6,mean 42.05,P4
+P4-016,"median days to second order (among repeaters, censored)",49.0,n=867,P4
+P4-017,"90-day repeat rate, all mature cohorts",0.2416,662 / 2740 first-time buyers (first order 2025-07..2026-03),P4
+P4-018,90-day repeat rate range across 9 cohort months,0.1974 to 0.2995,cohort sizes 217-537,P4
+P4-019,total marketing spend,76018.48,sum of 48 channel-months,P4
+P4-020,spend google_ads,11101.52,= 0.1460 of total spend,P4
+P4-021,spend influencer,12010.25,= 0.1580 of total spend,P4
+P4-022,spend meta_ads,38253.0,= 0.5032 of total spend,P4
+P4-023,spend tiktok_ads,14653.71,= 0.1928 of total spend,P4
+P4-024,CAC google_ads (base),21.73,11101.52 / 511 new buyers,P4
+P4-025,CAC google_ads range strict..generous,20.39 .. 26.69,buyers 416 .. 545,P4
+P4-026,CAC influencer (base),30.48,12010.25 / 394 new buyers,P4
+P4-027,CAC influencer range strict..generous,28.60 .. 30.48,buyers 394 .. 420,P4
+P4-028,CAC meta_ads (base),36.05,38253.00 / 1061 new buyers,P4
+P4-029,CAC meta_ads range strict..generous,33.83 .. 38.95,buyers 982 .. 1131,P4
+P4-030,CAC tiktok_ads (base),47.89,14653.71 / 306 new buyers,P4
+P4-031,CAC tiktok_ads range strict..generous,44.94 .. 47.89,buyers 306 .. 326,P4
+P4-032,"blended CAC, paid spend / ALL new buyers",19.86,76018.48 / 3828 new buyers,P4
+P4-033,share of new buyers attributed to the 4 paid sources (base),0.5935,2272 / 3828,P4
+P4-034,meta_ads: 90-day contribution per new buyer / CAC (Jul-Mar cohort),1.118,39.20 / 35.08; 764 buyers,P4
+P4-035,meta_ads: first-order contribution per buyer / CAC,0.828,29.03 / 35.08,P4
+P4-036,meta_ads: 90-day repeat rate,0.2186,n=764,P4
+P4-037,google_ads: 90-day contribution per new buyer / CAC (Jul-Mar cohort),1.835,38.72 / 21.10; 355 buyers,P4
+P4-038,google_ads: first-order contribution per buyer / CAC,1.344,28.35 / 21.10,P4
+P4-039,google_ads: 90-day repeat rate,0.2535,n=355,P4
+P4-040,tiktok_ads: 90-day contribution per new buyer / CAC (Jul-Mar cohort),0.685,34.22 / 49.96; 193 buyers,P4
+P4-041,tiktok_ads: first-order contribution per buyer / CAC,0.599,29.94 / 49.96,P4
+P4-042,tiktok_ads: 90-day repeat rate,0.1036,n=193,P4
+P4-043,influencer: 90-day contribution per new buyer / CAC (Jul-Mar cohort),1.07,33.02 / 30.86; 289 buyers,P4
+P4-044,influencer: first-order contribution per buyer / CAC,0.887,27.36 / 30.86,P4
+P4-045,influencer: 90-day repeat rate,0.1453,n=289,P4
+P4-046,unpaid sources (direct+organic+referral): 90-day contribution per new buyer,43.45,n=973,P4
+P4-047,paid sources: 90-day contribution per new buyer (all 4),37.38,n=1601,P4
+P4-048,"platform-reported orders, 4 channels",3136,vs Shopify first orders from these 4 sources 2272; all orders by their buyers 2857,P4
+P4-049,platform-reported orders / Shopify total valid orders,0.6264,3136 / 5006,P4
+P4-050,"platform-reported revenue, 4 channels",203198.17,,P4
+P4-051,google_ads: platform ROAS (reported revenue / spend),4.184,46453.65 / 11101.52,P4
+P4-052,google_ads: Shopify-side first-order net sales / spend,2.58,28640.00 / 11101.52,P4
+P4-053,google_ads: platform orders / Shopify first orders,1.405,718 / 511,P4
+P4-054,influencer: platform ROAS (reported revenue / spend),2.816,33823.03 / 12010.25,P4
+P4-055,influencer: Shopify-side first-order net sales / spend,1.823,21896.02 / 12010.25,P4
+P4-056,influencer: platform orders / Shopify first orders,1.297,511 / 394,P4
+P4-057,meta_ads: platform ROAS (reported revenue / spend),2.606,99682.07 / 38253.00,P4
+P4-058,meta_ads: Shopify-side first-order net sales / spend,1.55,59283.00 / 38253.00,P4
+P4-059,meta_ads: platform orders / Shopify first orders,1.458,1547 / 1061,P4
+P4-060,tiktok_ads: platform ROAS (reported revenue / spend),1.586,23239.42 / 14653.71,P4
+P4-061,tiktok_ads: Shopify-side first-order net sales / spend,1.197,17537.16 / 14653.71,P4
+P4-062,tiktok_ads: platform orders / Shopify first orders,1.176,360 / 306,P4
+P4-063,total contribution (before marketing),160981.36,,P4
+P4-064,"total contribution minus total marketing spend (all channels, before opex)",84962.88,160981.36 - 76018.48,P4
+P4-065,marketing spend / net revenue,0.2682,76018.48 / 283484.74,P4
+P4-066,marketing spend / contribution,0.4722,76018.48 / 160981.36,P4
+P4-067,blended CAC range across months,16.07 to 23.03,12 monthly points,P4
+P4-068,Nov 2025 spend share of annual spend,0.1451,11033.63 / 76018.48,P4
+P4-069,Nov 2025 contribution after marketing,5916.75,16950.38 - 11033.63,P4
+P4-070,CX4 mature-cohort buyers excluded (unknown or ambiguous label),294,/ 2740,P4
+P4-071,CX4 (all cohorts) usable source cells,7 of 7,coverage of WELCOME15 buyers 1.000,P4
+P4-072,CX4 (all cohorts) standardised 90-day repeat: welcome vs none,0.2313 vs 0.2987,diff 95% bootstrap -0.1090..-0.0239; cells with lower welcome rate 7,P4
+P4-073,CX4 (all cohorts) standardised first-order contribution: welcome vs none,26.16 vs 35.97,weights = WELCOME15 buyers per source,P4
+P4-074,CX4 (all cohorts) standardised first-order return rate (units): welcome vs none,0.1060 vs 0.0847,returned units / paid units on the first order,P4
+P4-075,CX4 (all cohorts) accepts_marketing share: welcome vs none,0.663 vs 0.630,selection evidence,P4
+P4-076,CX4 (excl Nov-Dec) usable source cells,6 of 7,coverage of WELCOME15 buyers 0.915,P4
+P4-077,CX4 (excl Nov-Dec) standardised 90-day repeat: welcome vs none,0.2379 vs 0.3136,diff 95% bootstrap -0.1261..-0.0262; cells with lower welcome rate 6,P4
+P4-078,CX4 (excl Nov-Dec) standardised first-order contribution: welcome vs none,26.54 vs 36.49,weights = WELCOME15 buyers per source,P4
+P4-079,CX4 (excl Nov-Dec) standardised first-order return rate (units): welcome vs none,0.0924 vs 0.0834,returned units / paid units on the first order,P4
+P4-080,CX4 (excl Nov-Dec) accepts_marketing share: welcome vs none,0.661 vs 0.625,selection evidence,P4
+P4-081,platform-reported revenue / platform spend (4 channels),2.673,203198.17 / 76018.48,P4
+P4-082,Shopify-side first-order net sales / spend (4 channels),1.6753,127356.18 / 76018.48,P4
+P4-083,"Shopify-side net sales, all orders of these buyers / spend",2.2103,168023.85 / 76018.48,P4
+P4-084,platform-reported revenue / Shopify net sales of all orders of these buyers,1.2093,203198.17 / 168023.85,P4
+P4-085,platform-reported revenue / Shopify first-order net sales,1.5955,203198.17 / 127356.18,P4
+P4-086,platform-reported orders / Shopify first orders (4 channels),1.3803,3136 / 2272,P4
+P4-087,platform-reported orders / Shopify all orders of these buyers,1.0977,3136 / 2857,P4
