@@ -1,0 +1,16 @@
+kpi,value
+Valid orders,5006.0
+Distinct customers (persons) with a valid order,3828.0
+Paid units (excl. free gifts),9301.0
+Free gift units (P13),277.0
+Orders containing a free gift,277.0
+Units per order (paid units / orders),1.858
+AOV gross (gross / orders),66.1332
+"AOV after discounts, before refunds",59.6562
+AOV net of refunds (net revenue / orders),56.629
+Net revenue per customer (net revenue / persons),74.0556
+Orders per customer (orders / persons),1.3077
+Orders with >=1 discount code,2649.0
+Share of orders with a code (of valid orders),0.5292
+Orders with >=1 return row,459.0
+"Share of orders with a return row (of valid orders, censored)",0.0917

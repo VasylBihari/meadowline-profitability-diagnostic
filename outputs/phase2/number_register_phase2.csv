@@ -1,0 +1,24 @@
+id,metric,value,numerator_denominator,period,filter,source_script
+P2-01,gross sales,331063.0,8712 lines,2025-07-01..2026-06-30,sum qty*unit_price,03_revenue_baseline.py
+P2-02,item discounts,32423.89,= 0.0979 of gross sales,2025-07-01..2026-06-30,sum line_discount,03_revenue_baseline.py
+P2-03,refunds,15154.37,469 return rows; = 0.0507 of net sales before refunds,2025-07-01..2026-06-30,sum refund_amount,03_revenue_baseline.py
+P2-04,net revenue,283484.74,gross - discounts - refunds,2025-07-01..2026-06-30,,03_revenue_baseline.py
+P2-05,shipping charged to customers,19069.05,,2025-07-01..2026-06-30,memo,03_revenue_baseline.py
+P2-06,free-shipping discount value (memo),786.1,98 orders,2025-07-01..2026-06-30,memo,03_revenue_baseline.py
+P2-07,valid orders,5006.0,,2025-07-01..2026-06-30,,03_revenue_baseline.py
+P2-08,distinct customers (persons),3828.0,email_hash with >=1 valid order,2025-07-01..2026-06-30,,03_revenue_baseline.py
+P2-09,paid units,9301.0,/ 5006 orders = 1.8580 units/order,2025-07-01..2026-06-30,excl. P13 gifts,03_revenue_baseline.py
+P2-10,free gift units,277.0,on 277 orders,2025-07-01..2026-06-30,P13,03_revenue_baseline.py
+P2-11,AOV gross,66.13,331063.00 / 5006,2025-07-01..2026-06-30,,03_revenue_baseline.py
+P2-12,"AOV after discounts, before refunds",59.66,298639.11 / 5006,2025-07-01..2026-06-30,,03_revenue_baseline.py
+P2-13,AOV net of refunds,56.63,283484.74 / 5006,2025-07-01..2026-06-30,,03_revenue_baseline.py
+P2-14,net revenue per customer,74.06,283484.74 / 3828,2025-07-01..2026-06-30,"within window, not LTV",03_revenue_baseline.py
+P2-15,orders per customer,1.308,5006 / 3828,2025-07-01..2026-06-30,within window,03_revenue_baseline.py
+P2-16,share of orders with a discount code,0.5292,2649 / 5006 valid orders,2025-07-01..2026-06-30,,03_revenue_baseline.py
+P2-17,share of orders with a return row,0.0917,459 / 5006 valid orders,2025-07-01..2026-06-30,censored for recent orders,03_revenue_baseline.py
+P2-18,orders Jul-Dec 2025,2218.0,,2025-07-01..2026-06-30,"valid orders, calendar half",03_revenue_baseline.py
+P2-19,orders Jan-Jun 2026,2788.0,,2025-07-01..2026-06-30,"valid orders, calendar half",03_revenue_baseline.py
+P2-20,net revenue Jul-Dec 2025 (order basis),120555.09,,2025-07-01..2026-06-30,refunds attributed to order month,03_revenue_baseline.py
+P2-21,net revenue Jan-Jun 2026 (order basis),162929.65,,2025-07-01..2026-06-30,refunds attributed to order month; recent months have less return time,03_revenue_baseline.py
+P2-22,peak month by net revenue (order basis): 2025-11,34678.99,634 orders,2025-07-01..2026-06-30,,03_revenue_baseline.py
+P2-23,US share of net sales before refunds,0.8596,US (gross-disc) / total (gross-disc),2025-07-01..2026-06-30,valid orders,03_revenue_baseline.py

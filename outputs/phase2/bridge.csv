@@ -1,0 +1,9 @@
+line,usd
+Gross sales (sum qty x unit_price),331063.0
+- Item discounts,-32423.89
+= Net sales before refunds,298639.11
+- Refunds (refund_amount),-15154.37
+= NET REVENUE,283484.74
+memo: shipping charged to customers (not in net revenue),19069.05
+memo: tax collected (excluded),19330.4
+"memo: free-shipping discount value (not charged, not in item discounts)",786.1
