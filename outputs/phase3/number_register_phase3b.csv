@@ -1,0 +1,17 @@
+id,metric,value,numerator_denominator
+P3b-001,"CX3b product x first/repeat standardised mature return rate, discounted",0.0681,"24 usable cells, coverage 1.000 of discounted units"
+P3b-002,"CX3b same, non-discounted",0.0422,same weights
+P3b-003,CX3b difference 95% bootstrap interval low,0.0152,
+P3b-004,CX3b difference 95% bootstrap interval high,0.036,
+P3b-005,CX3b cells where discounted return rate > non-discounted,17 of 24,
+P3b-006,"shipping recovery, original shipments: charged / cost",0.3696,19069.05 / 51587.91
+P3b-007,"net shipping result, original shipments (charged - cost)",-32518.86,
+P3b-008,shipping recovery zone AU,0.3973,"175 orders; avg charged 9.55, avg cost 24.03"
+P3b-009,shipping recovery zone CA,0.5939,"324 orders; avg charged 9.75, avg cost 16.42"
+P3b-010,shipping recovery zone GB,0.4065,"207 orders; avg charged 8.88, avg cost 21.85"
+P3b-011,shipping recovery zone US_domestic,0.3303,"4300 orders; avg charged 2.88, avg cost 8.73"
+P3b-012,"US domestic recovery, basket <50",0.8148,1939 orders; share charged $0 0.034
+P3b-013,"US domestic recovery, basket 50-75",0.156,916 orders; share charged $0 0.774
+P3b-014,"US domestic recovery, basket 75-100",0.0039,605 orders; share charged $0 0.993
+P3b-015,"US domestic recovery, basket 100+",0.0,840 orders; share charged $0 1.000
+P3b-016,US orders with $0 shipping and no FREESHIP code,2147,/ 4300 US orders

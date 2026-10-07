@@ -1,0 +1,7 @@
+reason_clean,rows,refund,impact,shipped_back,replacement_share,share_rows,share_impact,impact_per_return
+changed_mind,78,2794.66,2554.46,0.5513,0.0,0.1663,0.1648,32.7495
+damaged_leaked,55,910.33,1493.3,0.1818,0.5455,0.1173,0.0963,27.1509
+irritation_breakout,116,4056.86,4056.86,0.1121,0.0,0.2473,0.2617,34.9729
+no_visible_results,75,2505.27,2505.27,0.1067,0.0,0.1599,0.1616,33.4036
+not_as_expected,127,4280.35,4280.35,0.1102,0.0,0.2708,0.2761,33.7035
+wrong_item,18,606.9,611.58,0.9444,0.0,0.0384,0.0395,33.9767

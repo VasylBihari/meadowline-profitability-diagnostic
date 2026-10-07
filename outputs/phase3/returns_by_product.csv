@@ -1,0 +1,13 @@
+product_id,units,ret_units,rate,units_mature,ret_units_mature,rate_mature,ci_lo,ci_hi,name
+P01,1036,24.0,0.0232,894,22.0,0.0246,0.0163,0.037,Gentle Gel Cleanser 150ml
+P02,563,10.0,0.0178,477,7.0,0.0147,0.0071,0.03,Foaming Cream Cleanser 150
+P03,1621,85.0,0.0524,1397,81.0,0.058,0.0469,0.0715,Vitamin C Brightening Seru
+P04,1084,31.0,0.0286,912,27.0,0.0296,0.0204,0.0427,Hyaluronic Hydration Serum
+P05,841,38.0,0.0452,713,31.0,0.0435,0.0308,0.0611,Niacinamide 10% Serum 30ml
+P06,787,96.0,0.122,673,89.0,0.1322,0.1087,0.1599,Retinol Night Cream 0.3% 5
+P07,957,41.0,0.0428,822,38.0,0.0462,0.0339,0.0628,Daily Moisturizer SPF 30 5
+P08,518,16.0,0.0309,429,15.0,0.035,0.0213,0.0569,Barrier Repair Cream 50ml
+P09,329,24.0,0.0729,269,21.0,0.0781,0.0516,0.1164,Peptide Eye Cream 15ml
+P10,473,33.0,0.0698,414,30.0,0.0725,0.0512,0.1016,Purifying Clay Mask 100ml
+P11,426,20.0,0.0469,368,19.0,0.0516,0.0333,0.0792,Body Lotion 400ml
+P12,666,62.0,0.0931,586,53.0,0.0904,0.0698,0.1164,Complete Routine Set (Clea

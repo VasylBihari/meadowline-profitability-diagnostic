@@ -1,0 +1,11 @@
+line,usd
+Net revenue,283484.74
++ Shipping charged to customers,19069.05
+- COGS of items sold (incl. gifts),-77686.4
++ COGS recovered (restocked returns),356.2
+- COGS of replacements sent,-277.7
+- Postage (all shipments incl. replacements),-44526.66
+- Packaging,-7298.6
+- Payment fees,-11950.67
+- Return shipping paid by brand,-188.6
+"= CONTRIBUTION (before marketing, before opex)",160981.36

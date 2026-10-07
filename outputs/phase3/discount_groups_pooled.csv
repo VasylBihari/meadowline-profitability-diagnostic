@@ -1,0 +1,4 @@
+group,orders,gross,disc,net_rev,contribution,depth,aov_gross,units_per_order,contrib_per_order,margin,refund_rate_value,first_share
+freeship_only,44.0,1498.0,0.0,1447.0,545.1,0.0,34.0455,1.1136,12.3886,0.3767,0.034,0.8864
+item_discount,2605.0,174343.0,32423.89,132661.24,69047.07,0.186,66.9263,1.8514,26.5056,0.5205,0.0652,0.8384
+no_code,2357.0,155222.0,0.0,149376.5,91389.19,0.0,65.8557,1.8791,38.7735,0.6118,0.0377,0.681

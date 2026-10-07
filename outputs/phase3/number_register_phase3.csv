@@ -1,0 +1,79 @@
+id,metric,value,numerator_denominator,filter,period,source_script
+P3-001,net revenue (recomputed),283484.74,gross - discounts - refunds,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-002,CONTRIBUTION total (gift cogs $1.00 placeholder),160981.36,160981.36,before marketing and opex,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-003,contribution margin,0.5679,160981.36 / 283484.74 net revenue,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-004,COGS share of net revenue (net COGS / net revenue),0.2738,77607.90 / 283484.74,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-005,postage+packaging / net revenue,0.1828,51825.26 / 283484.74,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-006,shipping charged / (postage+packaging),0.3679,19069.05 / 51825.26,shipping recovery ratio,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-007,payment fees / net revenue,0.0422,11950.67 / 283484.74,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-008,contribution if gift cogs = $0,161258.36,,sensitivity,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-009,contribution if gift cogs = $3,160427.36,,sensitivity,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-010,contribution if P12 cogs +$2,159649.36,,sensitivity,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-011,top product by contribution: P03,29589.46,share of total contribution 0.1838,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-012,P12 set margin,0.5158,23758.17 / 46060.75,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-013,lowest-margin product (excl. gift): P11,0.4373,contribution / net revenue of the product,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-014,highest-margin product (excl. gift): P04,0.6201,contribution / net revenue of the product,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-015,gift program cost (277 units x $1.00 placeholder),277.0,277 units,ASSUMPTION A2,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-016,products whose revenue rank differs from contribution rank (of 12),3,,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-017,products whose contribution rank changes with units-based allocation (of 12),0,allocation sensitivity,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-018,share of orders with an item discount,0.5204,2605 / 5006 valid orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-019,pooled margin: no_code orders,0.6118,91389.19 / 149376.50,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-020,pooled margin: item_discount orders,0.5205,69047.07 / 132661.24,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-021,pooled contribution per order: no_code,38.77,/ 2357 orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-022,pooled contribution per order: item_discount,26.51,/ 2605 orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-023,total item-discount dollars,32423.89,,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-024,item-discount dollars / gross sales,0.0979,32423.89 / 331063.00,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-025,share of item-discount dollars: family creator_or_other,0.0532,1724.75 / 32423.89,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-026,share of item-discount dollars: family creator_or_other+welcome,0.0115,373.82 / 32423.89,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-027,share of item-discount dollars: family event,0.4941,16020.55 / 32423.89,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-028,share of item-discount dollars: family event+welcome,0.0703,2279.52 / 32423.89,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-029,share of item-discount dollars: family loyalty,0.0654,2120.60 / 32423.89,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-030,share of item-discount dollars: family welcome,0.3055,9904.65 / 32423.89,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-031,CX1 cells usable (n>=30 both sides),9 of 12,,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-032,CX1 coverage of discounted orders by usable cells,0.9827,2560 / 2605,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-033,"CX1 pooled contribution/order, discounted",26.51,,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-034,"CX1 pooled contribution/order, no_code",38.77,,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-035,"CX1 standardised contribution/order, discounted",25.93,weights = mix of discounted orders in usable cells,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-036,"CX1 standardised contribution/order, no_code",38.38,same weights,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-037,"CX1 standardised difference (disc - no_code), 95% bootstrap CI low",-13.34,2000 resamples within cell x group,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-038,"CX1 standardised difference (disc - no_code), 95% bootstrap CI high",-11.53,,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-039,"CX1 standardised gross list value/order, discounted",65.78,,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-040,"CX1 standardised gross list value/order, no_code",65.66,,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-041,"CX1 standardised margin, discounted",0.5194,contribution / net revenue,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-042,"CX1 standardised margin, no_code",0.6096,contribution / net revenue,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-043,"CX2 repeat<=90d rate, first-order depth none (all cohorts)",0.3048,331 / 1086 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-044,"CX2 repeat<=90d rate, first-order depth <=12% (all cohorts)",0.1609,14 / 87 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-045,"CX2 repeat<=90d rate, first-order depth ~15% (all cohorts)",0.2384,196 / 822 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-046,"CX2 repeat<=90d rate, first-order depth 16-25% (all cohorts)",0.1774,55 / 310 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-047,"CX2 repeat<=90d rate, first-order depth >=26% (all cohorts)",0.1517,66 / 435 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-048,"CX2 repeat<=90d rate, first-order depth none (excl Nov-Dec)",0.3092,278 / 899 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-049,"CX2 repeat<=90d rate, first-order depth <=12% (excl Nov-Dec)",0.1324,9 / 68 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-050,"CX2 repeat<=90d rate, first-order depth ~15% (excl Nov-Dec)",0.2347,138 / 588 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-051,"CX2 repeat<=90d rate, first-order depth 16-25% (excl Nov-Dec)",0.178,55 / 309 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-052,"CX2 repeat<=90d rate, first-order depth >=26% (excl Nov-Dec)",0.1087,5 / 46 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-053,CX2 overall repeat<=90d rate (all cohorts),0.2416,662 / 2740 first orders,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-054,returns: total economic impact on contribution,15501.82,refunds + return ship + replacement COGS + replacement shipping - recovered COGS,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-055,returns impact / contribution before returns,0.0878,15501.82 / 176483.18,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-056,returns impact / net sales before refunds (gross-disc),0.0519,15501.82 / 298639.11,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-057,share of return rows paid as returnless refund,0.7761,364 / 469 return rows,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-058,returnless refund dollars / all refund dollars,0.7774,11781.73 / 15154.37,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-059,"restocked units / returned units (refund rows only, excl replacements)",0.0844,38 / 450,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-060,COGS written off on refunded-not-restocked units,4017.2,included in net COGS already,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-061,return rows with fulfilment reasons (damaged_leaked + wrong_item),73,73 / 469 return rows = 0.1557,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-062,impact share of fulfilment reasons,0.1358,2104.88 / 15501.82,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-063,"unit return rate, mature cohort (orders <= 2026-05-16)",0.0544,433 / 7954 paid units,returned units / paid units; all return types,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-064,"unit return rate, all orders (censored)",0.0516,480 / 9301,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-065,mature unit return rate P06 Retinol Night Cream 0.,0.1322,89 / 673 units; 95% CI 0.109-0.160,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-066,mature unit return rate P12 Complete Routine Set (,0.0904,53 / 586 units; 95% CI 0.070-0.116,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-067,mature unit return rate P09 Peptide Eye Cream 15ml,0.0781,21 / 269 units; 95% CI 0.052-0.116,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-068,mature unit return rate P01 Gentle Gel Cleanser 15,0.0246,22 / 894 units; 95% CI 0.016-0.037,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-069,mature unit return rate P02 Foaming Cream Cleanser,0.0147,7 / 477 units; 95% CI 0.007-0.030,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-070,"product return-rate spread (max-min), mature",0.1176,simulation p=0.000 under one common rate,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-071,"mature unit return rate, first orders",0.0613,363 / 5918 units,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-072,"mature unit return rate, repeat orders",0.0344,70 / 2036 units,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-073,"CX3 pooled mature return rate, discounted lines",0.0681,returned units / paid units,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-074,"CX3 pooled mature return rate, non-discounted lines",0.0386,"returned units / paid units, non-discounted lines, orders <= 2026-05-16",valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-075,"CX3 product-standardised return rate, discounted",0.0681,"weights = discounted units, 12 usable product cells",valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-076,"CX3 product-standardised return rate, non-discounted",0.0398,same weights,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-077,top-3 products' share of refund dollars,0.6497,"['P12', 'P06', 'P03']",valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
+P3-078,same 3 products' share of net sales before refunds,0.4503,net sales before refunds of these 3 products / all products,valid orders,2025-07-01..2026-06-30,04_product_discount_return_economics.py
