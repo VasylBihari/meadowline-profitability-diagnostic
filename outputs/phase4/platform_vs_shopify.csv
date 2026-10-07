@@ -1,0 +1,5 @@
+source,spend,plat_orders,plat_revenue,shop_orders_all,shop_net_sales_all,shop_first_orders,shop_first_net_sales,plat_ROAS,shop_first_ROAS(net sales/spend),shop_all_ROAS(net sales/spend),plat_orders/shop_first_orders,plat_orders/shop_all_orders
+google_ads,11101.52,718,46453.65,680,40018.35,511,28640.0,4.1844,2.5798,3.6048,1.4051,1.0559
+influencer,12010.25,511,33823.03,470,27075.14,394,21896.02,2.8162,1.8231,2.2543,1.297,1.0872
+meta_ads,38253.0,1547,99682.07,1365,81057.8,1061,59283.0,2.6059,1.5498,2.119,1.4581,1.1333
+tiktok_ads,14653.71,360,23239.42,342,19872.56,306,17537.16,1.5859,1.1968,1.3561,1.1765,1.0526
